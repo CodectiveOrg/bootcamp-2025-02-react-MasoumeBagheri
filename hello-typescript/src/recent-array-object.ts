@@ -5,18 +5,13 @@ type MyObjectType = KnownType & {
   modifiedAt?: Date;
 };
 
-function recentObject(inputArray: MyObjectType[]): object {
-  let recentObject = inputArray[0];
-  let recentDate: Date = inputArray[0].modifiedAt || inputArray[0].createAt;
-  for (let i = 0; i < inputArray.length; i++) {
-    const currentDate = inputArray[i].modifiedAt || inputArray[i].createAt;
-    if (currentDate > recentDate) {
-      recentDate = currentDate;
-      recentObject = inputArray[i];
-    }
-  }
-
-  return recentObject;
+function recentObject(inputArray: MyObjectType[]): MyObjectType {
+  return inputArray.reduce((currentObj, recentObj) => {
+    return (currentObj.modifiedAt || currentObj.createAt) >
+      (recentObj.modifiedAt || recentObj.createAt)
+      ? currentObj
+      : recentObj;
+  });
 }
 
 const inputArray: MyObjectType[] = [
