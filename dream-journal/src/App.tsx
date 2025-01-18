@@ -3,6 +3,8 @@ import { Header } from "./components/header";
 import { IconLight, IconSearch } from "./components/icons/icons";
 
 import "./App.css";
+import { SearchBox } from "./components/search-box";
+import { DreamFilter } from "./components/dream-filter";
 
 function App() {
   return (
@@ -10,18 +12,11 @@ function App() {
       <Header />
       <main>
         <div className="toolbar">
-          <div className="search-box">
-            <input type="text" />
-            <IconSearch />
-            <select>
-              <option value="">All</option>
-              <option value="">Filter1</option>
-              <option value="">Filter2</option>
-            </select>
-            <button className="theme">
-              <IconLight />
-            </button>
-          </div>
+          <SearchBox />
+          <DreamFilter />
+          <button className="theme">
+            <IconLight />
+          </button>
         </div>
         <ul className="items"></ul>
       </main>
