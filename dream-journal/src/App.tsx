@@ -3,7 +3,7 @@ import { Dreams } from "./components/dreams";
 import { Footer } from "./components/footer";
 import { Toolbar } from "./components/toolbar";
 
-import "./App.css";
+// import "./App.css";
 
 function App() {
   return (
