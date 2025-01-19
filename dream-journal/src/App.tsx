@@ -1,10 +1,12 @@
 import { Header } from "./components/header";
-
-import { IconLight, IconSearch } from "./components/icons/icons";
-
-import "./App.css";
 import { SearchBox } from "./components/search-box";
 import { DreamFilter } from "./components/dream-filter";
+import { Button } from "./components/button";
+
+import { IconLight } from "./components/icons/icons";
+
+import "./App.css";
+import { Dreams } from "./components/dreams";
 
 function App() {
   return (
@@ -14,11 +16,11 @@ function App() {
         <div className="toolbar">
           <SearchBox />
           <DreamFilter />
-          <button className="theme">
+          <Button className="theme">
             <IconLight />
-          </button>
+          </Button>
         </div>
-        <ul className="items"></ul>
+        <Dreams />
       </main>
       <footer>
         <button className="add">+</button>
