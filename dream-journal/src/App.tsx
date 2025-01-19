@@ -7,6 +7,7 @@ import { IconLight } from "./components/icons/icons";
 
 import "./App.css";
 import { Dreams } from "./components/dreams";
+import { Footer } from "./components/footer";
 
 function App() {
   return (
@@ -22,9 +23,7 @@ function App() {
         </div>
         <Dreams />
       </main>
-      <footer>
-        <button className="add">+</button>
-      </footer>
+      <Footer />
     </div>
   );
 }
