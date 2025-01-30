@@ -1,31 +1,42 @@
+import { Size } from "../types/size.type";
 import { ButtonProps, ButtonShape } from "./buttontypes";
 
 import classNames from "classnames";
+import styles from "./button.module.css";
 
 const shapeClasses: Record<ButtonShape, string> = {
-  wide: "button-wide",
-  circle: "button-circle",
-  square: "button-square",
+  wide: "wide",
+  circle: "circle",
+  square: "square",
   default: "",
 };
 
+const sizeClasses: Record<Size, string> = {
+  small: "small",
+  medium: "medium",
+  large: "large",
+};
+
 export const Button: React.FC<ButtonProps> = ({
-  variant,
+  variant = "solid",
   isOutline = false,
-  shap = "default",
+  shape = "default",
+  size = "small",
   animatedIcon = false,
   children,
   className,
   ...rest
 }) => {
   const classes = classNames(
-    "button",
-    { "button-outline": isOutline },
-    { "animated-icon": animatedIcon },
-    { [`button-${variant}`]: variant },
-    { [`${shapeClasses[shap]}`]: shap },
+    styles.button,
+    { [styles["outline"]]: isOutline },
+    { [styles["animated-icon"]]: animatedIcon },
+    variant && styles[`${variant}`],
+    shape !== "default" && styles[shapeClasses[shape]],
+    styles[sizeClasses[size]],
     className
   );
+
   return (
     <button type="button" {...rest} className={classes}>
       {children}
