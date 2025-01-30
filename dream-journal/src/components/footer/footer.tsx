@@ -2,10 +2,12 @@ import { Button } from "../button";
 
 import { IconAdd } from "../icons/icons";
 
+import styles from "./footer.module.css";
+
 export const Footer: React.FC = () => {
   return (
-    <footer>
-      <Button className="add" shape="circle" size="medium">
+    <footer className={styles.footer}>
+      <Button className={styles.addButton} shape="circle" size="medium">
         <IconAdd fill="var(--color-surface)" />
       </Button>
     </footer>
