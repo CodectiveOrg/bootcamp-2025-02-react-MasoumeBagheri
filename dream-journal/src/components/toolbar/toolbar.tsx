@@ -10,7 +10,7 @@ export const Toolbar: React.FC = () => {
     <div className={styles.toolbar}>
       <SearchBox />
       <DreamFilter />
-      <Button className="theme" shape="square" size="small">
+      <Button className="theme" shape="square" size="small" variant="solid">
         <IconDark fill="var(--color-surface)" />
       </Button>
     </div>

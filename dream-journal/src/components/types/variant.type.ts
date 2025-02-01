@@ -1,4 +1,4 @@
-export type Variant = "surface" | "primary" | "text";
+export type Variant = "surface" | "primary" | "text" | "solid";
 
 // const variantStyles: Record<Variant, string> = {
 //     surface: "var(--color-surface)",

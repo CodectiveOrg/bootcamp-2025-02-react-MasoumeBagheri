@@ -18,7 +18,7 @@ const sizeClasses: Record<Size, string> = {
 };
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = "solid",
+  variant = "",
   isOutline = false,
   shape = "default",
   size = "small",

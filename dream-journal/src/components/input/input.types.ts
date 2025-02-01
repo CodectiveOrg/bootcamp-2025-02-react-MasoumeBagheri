@@ -1,5 +1,4 @@
 import { InputHTMLAttributes } from "react";
 import { ComponentBase } from "../types/component-base.type";
 
-export type TextInputProps = InputHTMLAttributes<HTMLInputElement> &
-  ComponentBase;
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & ComponentBase;

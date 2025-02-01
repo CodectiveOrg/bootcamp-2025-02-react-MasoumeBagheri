@@ -1,8 +1,8 @@
-import { TextInputProps } from "./text-input.types";
+import { InputProps } from "./input.types";
 
 import classNames from "classnames";
 
-export const TextInput: React.FC<TextInputProps> = ({
+export const Input: React.FC<InputProps> = ({
   variant,
   className,
   ...rest
