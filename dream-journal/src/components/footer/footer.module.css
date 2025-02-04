@@ -31,6 +31,13 @@
 
         text-align: center;
       }
+
+      .action {
+        display: flex;
+        justify-content: space-between;
+
+        margin-block-start: 8rem;
+      }
     }
   }
 }

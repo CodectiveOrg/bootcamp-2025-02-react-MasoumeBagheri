@@ -13,6 +13,7 @@
     flex: 1;
 
     color: var(--color-primary);
+    background-color: transparent;
 
     block-size: 1em;
 

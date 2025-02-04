@@ -5,10 +5,9 @@ import classNames from "classnames";
 import styles from "./button.module.css";
 
 const shapeClasses: Record<ButtonShape, string> = {
-  wide: "wide",
   circle: "circle",
   square: "square",
-  default: "",
+  rectangle: "rectangle",
 };
 
 const sizeClasses: Record<Size, string> = {
@@ -18,11 +17,10 @@ const sizeClasses: Record<Size, string> = {
 };
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = "",
+  variant = "solid",
   isOutline = false,
-  shape = "default",
+  shape = "rectangle",
   size = "small",
-  animatedIcon = false,
   children,
   className,
   ...rest
@@ -30,10 +28,9 @@ export const Button: React.FC<ButtonProps> = ({
   const classes = classNames(
     styles.button,
     { [styles["outline"]]: isOutline },
-    { [styles["animated-icon"]]: animatedIcon },
     variant && styles[`${variant}`],
-    shape !== "default" && styles[shapeClasses[shape]],
-    styles[sizeClasses[size]],
+    shape && styles[`${shapeClasses[shape]}`],
+    size && styles[`${sizeClasses[size]}`],
     className
   );
 

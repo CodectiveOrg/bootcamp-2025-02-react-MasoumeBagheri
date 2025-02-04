@@ -5,6 +5,10 @@
 
   border: none;
 
+  font-weight: 500;
+
+  text-transform: uppercase;
+
   cursor: pointer;
 
   &.solid {
@@ -19,6 +23,17 @@
 
       outline: none;
     }
+  }
+
+  &.outline {
+    background-color: var(--color-primary-text);
+    color: var(--color-primary);
+
+    border: 1px solid var(--color-primary);
+  }
+
+  &.rectangle {
+    border-radius: 0.5rem;
   }
 
   &.square {
@@ -44,8 +59,9 @@
   }
 
   &.large {
-    block-size: 3.25rem;
+    block-size: 2.375rem;
+    inline-size: 6.875rem;
 
-    font-size: 1.5rem;
+    font-size: 1.125rem;
   }
 }
