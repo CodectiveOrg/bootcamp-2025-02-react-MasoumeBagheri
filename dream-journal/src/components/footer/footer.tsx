@@ -1,7 +1,7 @@
 import { Button } from "../button";
 
 import { IconAdd } from "../icons/icons";
-import { Input } from "../input";
+import { TextBox } from "../textbox";
 
 import styles from "./footer.module.css";
 
@@ -16,13 +16,13 @@ export const Footer: React.FC = () => {
       >
         <IconAdd fill="var(--color-surface)" />
       </Button>
-      <dialog open>
-        <div className={styles.modal}>
-          <div className="title">New Dream</div>
-          <Input placeholder="Input your dream..." />
+      <dialog>
+        <div className={styles.content}>
+          <div className={styles.title}>new dream</div>
+          <TextBox placeholder="Input your dream..." />
           <div className="actions">
-            <Button>CANCEL</Button>
-            <Button>APPLY</Button>
+            <Button>cancel</Button>
+            <Button>apply</Button>
           </div>
         </div>
       </dialog>

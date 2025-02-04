@@ -1,26 +1,24 @@
-.search-box {
+.input {
   overflow: hidden;
 
   display: flex;
   align-items: center;
 
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
 
   border: 1px solid var(--color-primary);
   border-radius: 0.5rem;
 
-  .text-input {
+  input {
     flex: 1;
 
-    font-weight: 500;
-
-    line-height: 1;
+    color: var(--color-primary);
 
     block-size: 1em;
 
     border: none;
 
-    color: var(--color-primary);
+    line-height: 1;
 
     &:focus {
       outline: none;
@@ -29,14 +27,6 @@
     &::placeholder {
       color: var(--color-placeholder);
     }
-  }
-
-  .icon {
-    width: 21;
-    height: 21;
-
-    color: var(--color-primary);
-    stroke-width: 1;
   }
 
   &:focus-within {

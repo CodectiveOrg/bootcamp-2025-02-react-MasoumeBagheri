@@ -1,6 +1,5 @@
 import { Button } from "../button";
 import { IconEdit, IconTrash } from "../icons/icons";
-import { Input } from "../input";
 
 import styles from "./dreams.module.css";
 
@@ -12,7 +11,7 @@ export const Dreams: React.FC = () => {
       {dreams.map((dream) => (
         <li key={dream}>
           <label>
-            <Input type="checkbox" className={styles.checkbox} />
+            <input type="checkbox" />
             <div className={styles.title}>{dream}</div>
           </label>
           <div className={styles.actions}>

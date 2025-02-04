@@ -19,13 +19,9 @@
       align-items: center;
       gap: 1rem;
 
-      Input {
-        &.checkbox {
-          inline-size: 1.75rem;
-          block-size: 1.75rem;
-          /* 
-            border: 1px solid var(--color-primary-outline); */
-        }
+      input {
+        inline-size: 1.75rem;
+        block-size: 1.75rem;
       }
 
       .title {
