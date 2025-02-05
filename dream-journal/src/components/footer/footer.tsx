@@ -1,15 +1,20 @@
 import { Button } from "../button";
-
-import { IconAdd } from "../icons/icons";
 import { TextBox } from "../textbox";
+
+import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
 import styles from "./footer.module.css";
 
 export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
-      <Button className={styles.addButton} shape="circle" size="medium">
-        <IconAdd fill="var(--color-surface)" />
+      <Button
+        className={styles.addButton}
+        shape="circle"
+        size="medium"
+        variant="solid"
+      >
+        <MingcuteAddLine />
       </Button>
       <dialog>
         <div className={styles.content}>
