@@ -37,6 +37,8 @@
       gap: 0.5rem;
 
       Button {
+        font-size: 1.125rem;
+
         background-color: transparent;
         color: var(--color-fade);
 

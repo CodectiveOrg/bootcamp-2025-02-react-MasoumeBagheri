@@ -1,5 +1,7 @@
 import { Button } from "../button";
-import { IconEdit, IconTrash } from "../icons/icons";
+
+import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
+import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
 
 import styles from "./dreams.module.css";
 
@@ -16,10 +18,10 @@ export const Dreams: React.FC = () => {
           </label>
           <div className={styles.actions}>
             <Button className={styles.edit}>
-              <IconEdit width={18} height={18} viewBox="0 0 18 18" />
+              <MingcuteEdit2Line />
             </Button>
             <Button className={styles.remove}>
-              <IconTrash width={18} height={18} viewBox="0 0 18 18" />
+              <MingcuteDelete2Line />
             </Button>
           </div>
         </li>
