@@ -15,7 +15,7 @@ export const Toolbar: React.FC = () => {
         suffixIcon={<MingcuteSearchLine className={styles["search-icon"]} />}
       />
       <DreamFilter />
-      <Button className="theme" shape="square" size="small" variant="solid">
+      <Button shape="square" size="small" variant="solid">
         <MingcuteMoonStarsLine />
       </Button>
     </div>
