@@ -8,11 +8,9 @@
     flex: 1;
   }
 
-  .icon {
-    width: 21;
-    height: 21;
-
+  .search-icon {
     color: var(--color-primary);
-    stroke-width: 1;
+
+    font-size: 1.375rem;
   }
 }

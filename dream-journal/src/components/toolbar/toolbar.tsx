@@ -1,7 +1,9 @@
 import { Button } from "../button";
 import { DreamFilter } from "../dream-filter";
-import { IconDark, IconSearch } from "../icons/icons";
 import { TextBox } from "../textbox";
+
+import MingcuteSearchLine from "../../icons/MingcuteSearchLine";
+import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine";
 
 import styles from "./toolbar.module.css";
 
@@ -10,11 +12,11 @@ export const Toolbar: React.FC = () => {
     <div className={styles.toolbar}>
       <TextBox
         placeholder="Search dream..."
-        suffixIcon={<IconSearch className={styles.icon} />}
+        suffixIcon={<MingcuteSearchLine className={styles["search-icon"]} />}
       />
       <DreamFilter />
       <Button className="theme" shape="square" size="small" variant="solid">
-        <IconDark fill="var(--color-surface)" />
+        <MingcuteMoonStarsLine />
       </Button>
     </div>
   );
