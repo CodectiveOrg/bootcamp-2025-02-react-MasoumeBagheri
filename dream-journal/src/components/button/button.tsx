@@ -1,41 +1,27 @@
-import { Size } from "../types/size.type";
-import { ButtonProps, ButtonShape } from "./buttontypes";
-
-import classNames from "classnames";
 import styles from "./button.module.css";
-
-const shapeClasses: Record<ButtonShape, string> = {
-  circle: "circle",
-  square: "square",
-  rectangle: "rectangle",
-};
-
-const sizeClasses: Record<Size, string> = {
-  small: "small",
-  medium: "medium",
-  large: "large",
-};
+import { ButtonProps } from "./buttontypes";
+import clsx from "clsx";
 
 export const Button: React.FC<ButtonProps> = ({
   variant = "solid",
-  isOutline = false,
   shape = "rectangle",
   size = "small",
   children,
   className,
   ...rest
 }) => {
-  const classes = classNames(
-    styles.button,
-    { [styles["outline"]]: isOutline },
-    variant && styles[`${variant}`],
-    shape && styles[`${shapeClasses[shape]}`],
-    size && styles[`${sizeClasses[size]}`],
-    className
-  );
-
   return (
-    <button type="button" {...rest} className={classes}>
+    <button
+      type="button"
+      className={clsx(
+        styles.button,
+        styles[variant],
+        styles[shape],
+        styles[size],
+        className
+      )}
+      {...rest}
+    >
       {children}
     </button>
   );

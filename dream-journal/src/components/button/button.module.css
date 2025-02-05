@@ -25,11 +25,19 @@
     }
   }
 
-  &.outline {
+  &.outlined {
     background-color: var(--color-primary-text);
     color: var(--color-primary);
 
     border: 1px solid var(--color-primary);
+  }
+
+  &.transparent {
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+    }
   }
 
   &.rectangle {

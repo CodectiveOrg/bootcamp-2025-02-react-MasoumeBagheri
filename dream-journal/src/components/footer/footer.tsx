@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <div className={styles.title}>new dream</div>
           <TextBox placeholder="Input your dream..." />
           <div className={styles.action}>
-            <Button isOutline size="large">
+            <Button variant="outlined" size="large">
               cancel
             </Button>
             <Button size="large">apply</Button>

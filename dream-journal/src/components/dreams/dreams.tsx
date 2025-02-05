@@ -17,10 +17,10 @@ export const Dreams: React.FC = () => {
             <div className={styles.title}>{dream}</div>
           </label>
           <div className={styles.actions}>
-            <Button className={styles.edit}>
+            <Button variant="transparent" className={styles.edit}>
               <MingcuteEdit2Line />
             </Button>
-            <Button className={styles.remove}>
+            <Button variant="transparent" className={styles.remove}>
               <MingcuteDelete2Line />
             </Button>
           </div>

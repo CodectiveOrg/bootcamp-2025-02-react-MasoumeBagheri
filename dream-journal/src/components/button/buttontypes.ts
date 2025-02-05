@@ -1,12 +1,12 @@
 import { ButtonHTMLAttributes } from "react";
-import { ComponentBase } from "../types/component-base.type";
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  ComponentBase & {
-    isOutline?: boolean;
-    shape?: ButtonShape;
-    size?: ButtonSize;
-  };
+type Variant = "solid" | "outlined" | "transparent";
+type Shape = "rectangle" | "circle" | "square";
+type Size = "small" | "medium" | "large";
 
-export type ButtonShape = "rectangle" | "circle" | "square";
-export type ButtonSize = "small" | "medium" | "large";
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  className?: string;
+  variant?: Variant;
+  shape?: Shape;
+  size?: Size;
+};

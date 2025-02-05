@@ -38,8 +38,6 @@
 
       Button {
         font-size: 1.125rem;
-
-        background-color: transparent;
         color: var(--color-fade);
 
         &.edit {
