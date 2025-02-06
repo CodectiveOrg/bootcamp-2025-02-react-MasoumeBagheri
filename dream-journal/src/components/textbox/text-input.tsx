@@ -1,8 +1,12 @@
-import { TextBoxProps } from "./textboxtypes";
+import { ReactNode } from "react";
 
 import styles from "./textbox.module.css";
 
-export const TextBox: React.FC<TextBoxProps> = ({
+type Props = {
+  className?: string;
+  suffixIcon?: ReactNode;
+};
+export const TextInput: React.FC<Props> = ({
   suffixIcon,
   className,
   ...rest
