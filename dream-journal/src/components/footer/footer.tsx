@@ -1,5 +1,5 @@
 import { Button } from "../button";
-import { TextBox } from "../text-input";
+import { TextInput } from "../text-input";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
       <dialog>
         <div className={styles.content}>
           <div className={styles.title}>new dream</div>
-          <TextBox placeholder="Input your dream..." />
+          <TextInput placeholder="Input your dream..." />
           <div className={styles.action}>
             <Button variant="outlined" size="large">
               cancel
