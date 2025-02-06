@@ -5,7 +5,7 @@ import { Toolbar } from "./components/toolbar";
 
 function App() {
   return (
-    <div className="app">
+    <div>
       <Header />
       <main>
         <Toolbar />
