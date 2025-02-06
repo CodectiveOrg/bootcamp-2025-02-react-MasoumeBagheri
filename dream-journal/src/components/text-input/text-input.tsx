@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, ReactNode } from "react";
 
-import styles from "./textbox.module.css";
+import styles from "./text-input.module.css";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
