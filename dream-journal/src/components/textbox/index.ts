@@ -1,1 +1,1 @@
-export * from "./textbox";
+export * from "./text-input";

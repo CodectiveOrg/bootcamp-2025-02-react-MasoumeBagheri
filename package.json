@@ -1,5 +1,5 @@
 {
-  "dependencies": {
+  "devDependencies": {
     "clsx": "^2.1.1"
   }
 }
