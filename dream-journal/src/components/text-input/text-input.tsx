@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { InputHTMLAttributes, ReactNode } from "react";
 
 import styles from "./textbox.module.css";
 
-type Props = {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   suffixIcon?: ReactNode;
 };

@@ -36,20 +36,18 @@
       display: flex;
       gap: 0.5rem;
 
-      Button {
-        font-size: 1.125rem;
-        color: var(--color-fade);
+      font-size: 1.125rem;
+      color: var(--color-fade);
 
-        &.edit {
-          &:hover {
-            color: var(--color-primary);
-          }
+      &.edit {
+        &:hover {
+          color: var(--color-primary);
         }
+      }
 
-        &.remove {
-          &:hover {
-            color: var(--color-danger);
-          }
+      &.remove {
+        &:hover {
+          color: var(--color-danger);
         }
       }
     }

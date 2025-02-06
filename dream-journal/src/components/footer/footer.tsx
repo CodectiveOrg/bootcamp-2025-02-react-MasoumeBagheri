@@ -1,5 +1,5 @@
 import { Button } from "../button";
-import { TextBox } from "../textbox";
+import { TextBox } from "../text-input";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
