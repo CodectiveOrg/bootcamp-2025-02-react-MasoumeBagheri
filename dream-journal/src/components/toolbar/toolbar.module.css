@@ -1,0 +1,16 @@
+.toolbar {
+  display: flex;
+  gap: 1rem;
+
+  margin-block: 1rem;
+
+  > :first-child {
+    flex: 1;
+  }
+
+  .search-icon {
+    color: var(--color-primary);
+
+    font-size: 1.375rem;
+  }
+}
