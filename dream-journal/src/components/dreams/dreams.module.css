@@ -37,20 +37,24 @@
       gap: 0.5rem;
 
       font-size: 1.125rem;
-      color: var(--color-fade);
 
-      &.edit {
+      & .edit {
+         color: var(--color-fade);
+
         &:hover {
           color: var(--color-primary);
         }
       }
 
-      &.remove {
+      & .remove {
+        color: var(--color-fade);
+
         &:hover {
           color: var(--color-danger);
         }
       }
     }
+
     &:hover {
       .actions {
         opacity: 1;
