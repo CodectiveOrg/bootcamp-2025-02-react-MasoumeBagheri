@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { Button } from "../button";
 import { TextInput } from "../text-input";
 
@@ -36,7 +38,7 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
     }
 
     const dream: Dream = {
-      id: "",
+      id: uuidv4(),
       title,
       content: "",
       date: new Date(),
