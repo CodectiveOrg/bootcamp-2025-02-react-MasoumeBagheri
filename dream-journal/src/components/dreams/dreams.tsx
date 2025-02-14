@@ -1,4 +1,3 @@
-
 import { Button } from "../button";
 
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
@@ -7,6 +6,8 @@ import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
 import { Dream } from "../../types/dream.type";
 
 import styles from "./dreams.module.css";
+
+const dateFormatter = new Intl.DateTimeFormat("en-CA");
 
 type Props = {
   dreams: Dream[];
@@ -19,10 +20,8 @@ export const Dreams: React.FC<Props> = ({ dreams }) => {
         const { id, title, content, date, vibe } = dream;
         return (
           <li key={id}>
-            <label>
-              <input type="checkbox" />
-              <div className={styles.title}>{title}</div>
-            </label>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.date}>{dateFormatter.format(date)}</div>
             <div className={styles.actions}>
               <Button variant="transparent" className={styles.edit}>
                 <MingcuteEdit2Line />
