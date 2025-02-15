@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { useContext } from "react";
 
 import { Button } from "../button";
 import { DreamFilter } from "../dream-filter";
@@ -8,16 +8,13 @@ import MingcuteSearchLine from "../../icons/MingcuteSearchLine";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine";
 import MingcuteSunLine from "../../icons/MingcuteSunLine";
 
-import { Theme } from "../../types/theme";
+import { ThemeContext } from "../../App";
 
 import styles from "./toolbar.module.css";
 
-type Props = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
+export const Toolbar: React.FC = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
 
-export const Toolbar: React.FC<Props> = ({ theme, setTheme }) => {
   const changeThemeHandler = (): void => {
     setTheme((currentTheme) => {
       return currentTheme === "light" ? "dark" : "light";

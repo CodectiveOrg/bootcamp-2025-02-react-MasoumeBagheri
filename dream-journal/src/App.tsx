@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 
 import { Header } from "./components/header";
 import { Dreams } from "./components/dreams";
@@ -7,6 +13,16 @@ import { Toolbar } from "./components/toolbar";
 
 import { Dream } from "./types/dream.type";
 import { Theme } from "./types/theme";
+
+type ThemeContextValue = {
+  theme: Theme;
+  setTheme: Dispatch<SetStateAction<Theme>>;
+};
+
+export const ThemeContext = createContext<ThemeContextValue>({
+  theme: "light",
+  setTheme: () => {},
+});
 
 function App() {
   const [theme, setTheme] = useState<Theme>("light");
@@ -36,14 +52,14 @@ function App() {
   }, [dreams]);
 
   return (
-    <div>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
       <Header />
       <main>
-        <Toolbar theme={theme} setTheme={setTheme} />
+        <Toolbar />
         <Dreams dreams={dreams} />
       </main>
       <Footer onAddDream={addDreamHandler} />
-    </div>
+    </ThemeContext.Provider>
   );
 }
 
