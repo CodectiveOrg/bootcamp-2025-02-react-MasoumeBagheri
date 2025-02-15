@@ -6,8 +6,11 @@ import { Footer } from "./components/footer";
 import { Toolbar } from "./components/toolbar";
 
 import { Dream } from "./types/dream.type";
+import { Theme } from "./types/theme";
 
 function App() {
+  const [theme, setTheme] = useState<Theme>("light");
+
   const [dreams, setDreams] = useState<Dream[]>(() => {
     const items = localStorage.getItem("dreams");
 
@@ -25,6 +28,10 @@ function App() {
   };
 
   useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
+
+  useEffect(() => {
     localStorage.setItem("dreams", JSON.stringify(dreams));
   }, [dreams]);
 
@@ -32,7 +39,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <Toolbar />
+        <Toolbar theme={theme} setTheme={setTheme} />
         <Dreams dreams={dreams} />
       </main>
       <Footer onAddDream={addDreamHandler} />

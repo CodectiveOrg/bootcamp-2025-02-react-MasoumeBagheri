@@ -12,6 +12,7 @@
   input {
     flex: 1;
 
+    background-color: transparent;
     color: var(--color-primary);
 
     block-size: 1em;

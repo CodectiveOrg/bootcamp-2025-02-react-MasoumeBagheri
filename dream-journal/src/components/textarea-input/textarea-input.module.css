@@ -12,6 +12,7 @@
   textarea {
     flex: 1;
 
+    background-color: transparent;
     color: var(--color-primary);
 
     border: none;

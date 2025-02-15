@@ -13,6 +13,15 @@
   --color-primary-outline: hsl(243, 100%, 69%, 40%);
 
   --color-primary-focus: hsl(243, 67%, 59%);
+
+  color-scheme: light;
+
+  &[data-theme="dark"] {
+    --color-surface: hsl(0, 0%, 15%);
+    --color-text: hsl(0, 0%, 97%);
+
+    color-scheme: dark;
+  }
 }
 
 *,
@@ -46,6 +55,9 @@ optgroup {
 }
 
 body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
   inline-size: min(45rem, 100% - 2rem);
 
   margin-inline: auto;
