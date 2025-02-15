@@ -1,10 +1,4 @@
-import {
-  createContext,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "./components/header";
 import { Dreams } from "./components/dreams";
@@ -12,21 +6,9 @@ import { Footer } from "./components/footer";
 import { Toolbar } from "./components/toolbar";
 
 import { Dream } from "./types/dream.type";
-import { Theme } from "./types/theme";
-
-type ThemeContextValue = {
-  theme: Theme;
-  setTheme: Dispatch<SetStateAction<Theme>>;
-};
-
-export const ThemeContext = createContext<ThemeContextValue>({
-  theme: "light",
-  setTheme: () => {},
-});
+import { ThemeProvider } from "./provider";
 
 function App() {
-  const [theme, setTheme] = useState<Theme>("light");
-
   const [dreams, setDreams] = useState<Dream[]>(() => {
     const items = localStorage.getItem("dreams");
 
@@ -44,22 +26,18 @@ function App() {
   };
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
-
-  useEffect(() => {
     localStorage.setItem("dreams", JSON.stringify(dreams));
   }, [dreams]);
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeProvider>
       <Header />
       <main>
         <Toolbar />
         <Dreams dreams={dreams} />
       </main>
       <Footer onAddDream={addDreamHandler} />
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 }
 

@@ -8,9 +8,8 @@ import MingcuteSearchLine from "../../icons/MingcuteSearchLine";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine";
 import MingcuteSunLine from "../../icons/MingcuteSunLine";
 
-import { ThemeContext } from "../../App";
-
 import styles from "./toolbar.module.css";
+import { ThemeContext } from "../../provider";
 
 export const Toolbar: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext);
