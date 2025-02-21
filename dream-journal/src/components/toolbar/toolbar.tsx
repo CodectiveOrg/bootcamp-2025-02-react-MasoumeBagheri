@@ -1,7 +1,6 @@
 import { useContext } from "react";
 
 import { Button } from "../button";
-import { DreamFilter } from "../dream-filter";
 import { TextInput } from "../text-input";
 
 import MingcuteSearchLine from "../../icons/MingcuteSearchLine";
@@ -10,6 +9,7 @@ import MingcuteSunLine from "../../icons/MingcuteSunLine";
 
 import styles from "./toolbar.module.css";
 import { ThemeContext } from "../../provider";
+import { Select } from "../select";
 
 export const Toolbar: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -26,7 +26,13 @@ export const Toolbar: React.FC = () => {
         placeholder="Search dream..."
         suffixIcon={<MingcuteSearchLine className={styles["search-icon"]} />}
       />
-      <DreamFilter />
+      <Select
+        options={[
+          { value: "all", label: "All" },
+          { value: "good", label: "Good" },
+          { value: "bad", label: "Bad" },
+        ]}
+      />
       <Button
         shape="square"
         size="small"

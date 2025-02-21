@@ -12,7 +12,7 @@ import MingcuteAddLine from "../../icons/MingcuteAddLine";
 import styles from "./footer.module.css";
 import { DateInput } from "../date-input";
 import { TextArea } from "../textarea-input";
-import { VibeInput } from "../vibe-input";
+import { Select } from "../select";
 
 type Props = {
   onAddDream: (dream: Dream) => void;
@@ -91,7 +91,14 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
           <TextInput ref={inputRef} placeholder="Input your dream..." />
           <TextArea ref={contentRef} placeholder="Input your content..." />
           <DateInput ref={dateRef} />
-          <VibeInput ref={vibeRef} />
+          <Select
+            ref={vibeRef}
+            options={[
+              { value: "good", label: "😃 Good" },
+              { value: "bad", label: "😭 Bad" },
+            ]}
+          />
+
           <div className={styles.action}>
             <Button
               variant="outlined"

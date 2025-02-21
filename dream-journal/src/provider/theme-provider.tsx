@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 
-import { Theme } from "../types/theme";
+import { Theme } from "../types/theme.type";
 
 type ThemeContextValue = {
   theme: Theme;
