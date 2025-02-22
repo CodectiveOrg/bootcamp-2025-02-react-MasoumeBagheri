@@ -1,18 +1,19 @@
-import { useRef } from "react";
+import { FormEvent, useRef } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "../button";
 import { TextInput } from "../text-input";
+import { DateInput } from "../date-input";
+import { TextArea } from "../textarea-input";
+import { Select } from "../select";
 
 import { Dream } from "../../types/dream.type";
+import { Vibe } from "../../types/vibe.type";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
 import styles from "./footer.module.css";
-import { DateInput } from "../date-input";
-import { TextArea } from "../textarea-input";
-import { Select } from "../select";
 
 type Props = {
   onAddDream: (dream: Dream) => void;
@@ -20,10 +21,7 @@ type Props = {
 
 export const Footer: React.FC<Props> = ({ onAddDream }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const dateRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
-  const vibeRef = useRef<HTMLSelectElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const toggleDialog = (isOpen: boolean): void => {
     if (!dialogRef.current) return;
@@ -35,11 +33,17 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
     }
   };
 
-  const addDreamHandler = (): void => {
-    const title = inputRef.current?.value;
-    const date = dateRef.current?.value;
-    const content = contentRef.current?.value;
-    const vibe = vibeRef.current?.value as "good" | "bad";
+  const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const title = formData.get("title") as string;
+    const date = formData.get("date") as string;
+    console.log(date);
+
+    const content = formData.get("content") as string;
+    const vibe = formData.get("vibe") as Vibe;
 
     if (!title) {
       console.log("Title is required.");
@@ -86,13 +90,17 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
         <MingcuteAddLine />
       </Button>
       <dialog ref={dialogRef}>
-        <div className={styles.content}>
+        <form
+          ref={formRef}
+          onSubmit={formSubmitHandler}
+          className={styles.content}
+        >
           <div className={styles.title}>new dream</div>
-          <TextInput ref={inputRef} placeholder="Input your dream..." />
-          <TextArea ref={contentRef} placeholder="Input your content..." />
-          <DateInput ref={dateRef} />
+          <TextInput name="title" placeholder="Input your dream..." />
+          <TextArea name="content" placeholder="Input your content..." />
+          <DateInput name="date" />
           <Select
-            ref={vibeRef}
+            name="vibe"
             options={[
               { value: "good", label: "😃 Good" },
               { value: "bad", label: "😭 Bad" },
@@ -107,11 +115,11 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
             >
               cancel
             </Button>
-            <Button size="large" onClick={addDreamHandler}>
-              apply
+            <Button type="submit" size="large">
+              create
             </Button>
           </div>
-        </div>
+        </form>
       </dialog>
     </footer>
   );
