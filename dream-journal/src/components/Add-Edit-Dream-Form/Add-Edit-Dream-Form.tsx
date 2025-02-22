@@ -31,7 +31,6 @@ export const AddEditDreamForm: React.FC<Props> = ({
 
     const title = formData.get("title") as string;
     const date = formData.get("date") as string;
-    console.log(date);
 
     const content = formData.get("content") as string;
     const vibe = formData.get("vibe") as Vibe;

@@ -2,14 +2,15 @@ import { useContext } from "react";
 
 import { Button } from "../button";
 import { TextInput } from "../text-input";
+import { Select } from "../select";
+
+import { ThemeContext } from "../../provider/theme-provider";
 
 import MingcuteSearchLine from "../../icons/MingcuteSearchLine";
 import MingcuteMoonStarsLine from "../../icons/MingcuteMoonStarsLine";
 import MingcuteSunLine from "../../icons/MingcuteSunLine";
 
 import styles from "./toolbar.module.css";
-import { ThemeContext } from "../../provider";
-import { Select } from "../select";
 
 export const Toolbar: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext);

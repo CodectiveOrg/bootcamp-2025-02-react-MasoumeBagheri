@@ -1,19 +1,20 @@
+import { useContext } from "react";
+
 import { Button } from "../button";
+
+import { DreamContext } from "../../provider/dream-provider";
 
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
-
-import { Dream } from "../../types/dream.type";
 
 import styles from "./dreams.module.css";
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA");
 
-type Props = {
-  dreams: Dream[];
-};
+export const Dreams: React.FC = () => {
+  const { dreams } = useContext(DreamContext);
 
-export const Dreams: React.FC<Props> = ({ dreams }) => {
+  console.log("Dreams in component:", dreams);
   return (
     <ul className={styles.dreams}>
       {dreams.map((dream) => {

@@ -1,19 +1,17 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 import { Button } from "../button";
 import { AddEditDreamForm } from "../Add-Edit-Dream-Form";
 
-import MingcuteAddLine from "../../icons/MingcuteAddLine";
+import { DreamContext } from "../../provider/dream-provider";
 
-import { Dream } from "../../types/dream.type";
+import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
 import styles from "./footer.module.css";
 
-type Props = {
-  onAddDream: (dream: Dream) => void;
-};
+export const Footer: React.FC = () => {
+  const { addDream } = useContext(DreamContext);
 
-export const Footer: React.FC<Props> = ({ onAddDream }) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const toggleDialog = (isOpen: boolean): void => {
@@ -38,7 +36,7 @@ export const Footer: React.FC<Props> = ({ onAddDream }) => {
         <MingcuteAddLine />
       </Button>
       <dialog ref={dialogRef}>
-        <AddEditDreamForm onAddDream={onAddDream} toggleDialog={toggleDialog} />
+        <AddEditDreamForm onAddDream={addDream} toggleDialog={toggleDialog} />
       </dialog>
     </footer>
   );
