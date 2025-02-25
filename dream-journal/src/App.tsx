@@ -5,17 +5,20 @@ import { Toolbar } from "./components/toolbar";
 
 import { ThemeProvider } from "./provider/theme-provider";
 import { DreamProvider } from "./provider/dream-provider";
+import { ModalProvider } from "./provider/modal-provider";
 
 function App() {
   return (
     <ThemeProvider>
       <DreamProvider>
-        <Header />
-        <main>
-          <Toolbar />
-          <Dreams />
-        </main>
-        <Footer />
+        <ModalProvider>
+          <Header />
+          <main>
+            <Toolbar />
+            <Dreams />
+          </main>
+          <Footer />
+        </ModalProvider>
       </DreamProvider>
     </ThemeProvider>
   );

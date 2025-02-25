@@ -1,28 +1,15 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 
 import { Button } from "../button";
-import { AddEditDreamForm } from "../Add-Edit-Dream-Form";
 
-import { DreamContext } from "../../provider/dream-provider";
+import { ModalContext } from "../../provider/modal-provider";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
 import styles from "./footer.module.css";
 
 export const Footer: React.FC = () => {
-  const { addDream } = useContext(DreamContext);
-
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const toggleDialog = (isOpen: boolean): void => {
-    if (!dialogRef.current) return;
-
-    if (isOpen) {
-      dialogRef.current?.showModal();
-    } else {
-      dialogRef.current?.close();
-    }
-  };
+  const { openModal } = useContext(ModalContext);
 
   return (
     <footer className={styles.footer}>
@@ -31,13 +18,10 @@ export const Footer: React.FC = () => {
         shape="circle"
         size="medium"
         variant="solid"
-        onClick={() => toggleDialog(true)}
+        onClick={() => openModal()}
       >
         <MingcuteAddLine />
       </Button>
-      <dialog ref={dialogRef}>
-        <AddEditDreamForm onAddDream={addDream} toggleDialog={toggleDialog} />
-      </dialog>
     </footer>
   );
 };

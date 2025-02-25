@@ -34,6 +34,8 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
   };
 
   const editDream = (dream: Dream): void => {
+    console.log(dream);
+
     setDreams((oldDreams) =>
       oldDreams.map((oldDream) => {
         if (oldDream.id === dream.id) {
