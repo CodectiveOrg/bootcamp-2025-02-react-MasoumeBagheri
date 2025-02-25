@@ -6,19 +6,22 @@ import { Toolbar } from "./components/toolbar";
 import { ThemeProvider } from "./provider/theme-provider";
 import { DreamProvider } from "./provider/dream-provider";
 import { ModalProvider } from "./provider/modal-provider";
+import { FiltersProvider } from "./provider/filters-provider";
 
 function App() {
   return (
     <ThemeProvider>
       <DreamProvider>
-        <ModalProvider>
-          <Header />
-          <main>
-            <Toolbar />
-            <Dreams />
-          </main>
-          <Footer />
-        </ModalProvider>
+        <FiltersProvider>
+          <ModalProvider>
+            <Header />
+            <main>
+              <Toolbar />
+              <Dreams />
+            </main>
+            <Footer />
+          </ModalProvider>
+        </FiltersProvider>
       </DreamProvider>
     </ThemeProvider>
   );

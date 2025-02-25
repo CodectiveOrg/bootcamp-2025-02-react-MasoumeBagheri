@@ -2,23 +2,23 @@ import { useContext } from "react";
 
 import { Button } from "../button";
 
-import { DreamContext } from "../../provider/dream-provider";
+import { ModalContext } from "../../provider/modal-provider";
+import { FiltersContext } from "../../provider/filters-provider";
 
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
 
 import styles from "./dreams.module.css";
-import { ModalContext } from "../../provider/modal-provider";
 
 const dateFormatter = new Intl.DateTimeFormat("en-CA");
 
 export const Dreams: React.FC = () => {
-  const { dreams } = useContext(DreamContext);
   const { openModal } = useContext(ModalContext);
+  const { filteredDream } = useContext(FiltersContext);
 
   return (
     <ul className={styles.dreams}>
-      {dreams.map((dream) => {
+      {filteredDream.map((dream) => {
         const { id, title, content, date, vibe } = dream;
         return (
           <li key={id}>
