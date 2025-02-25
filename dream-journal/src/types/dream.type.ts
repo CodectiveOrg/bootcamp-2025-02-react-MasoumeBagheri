@@ -1,8 +1,9 @@
+import { Vibe } from "./vibe.type";
+
 export type Dream = {
-    id: string;
-    title: string;
-    content: string;
-    date: Date;
-    vibe: "good" | "bad";
-  };
-  
+  id: string;
+  title: string;
+  description: string;
+  date: Date;
+  vibe: Vibe;
+};

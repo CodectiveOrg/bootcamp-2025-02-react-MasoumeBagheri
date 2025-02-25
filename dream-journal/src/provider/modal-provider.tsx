@@ -44,8 +44,6 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
   };
 
   const onSubmitHandler = (dream: Dream): void => {
-    console.log(editingDream + "*****" + dream);
-
     if (editingDream) {
       editDream(dream);
     } else {

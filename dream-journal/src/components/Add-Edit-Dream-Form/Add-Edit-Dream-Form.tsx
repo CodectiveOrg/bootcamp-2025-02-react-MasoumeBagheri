@@ -37,7 +37,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
     const formData = new FormData(e.currentTarget);
 
     const title = formData.get("title") as string;
-    const content = formData.get("content") as string;
+    const description = formData.get("description") as string;
     const date = formData.get("date") as string;
     // const vibe = formData.get("vibe") as Vibe;
     const vibe = (formData.get("vibe") as Vibe) || "good";
@@ -47,8 +47,8 @@ export const AddEditDreamForm: React.FC<Props> = ({
       return;
     }
 
-    if (!content) {
-      console.log("Content is required.");
+    if (!description) {
+      console.log("description is required.");
       return;
     }
 
@@ -65,7 +65,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
     const dream: Dream = {
       id: editingDream?.id ?? uuidv4(),
       title,
-      content,
+      description,
       date: new Date(date),
       vibe,
     };
@@ -86,9 +86,9 @@ export const AddEditDreamForm: React.FC<Props> = ({
         defaultValue={editingDream?.title}
       />
       <TextArea
-        name="content"
-        placeholder="Input your content..."
-        defaultValue={editingDream?.content}
+        name="description"
+        placeholder="Input your description..."
+        defaultValue={editingDream?.description}
       />
       <DateInput
         name="date"
@@ -104,7 +104,12 @@ export const AddEditDreamForm: React.FC<Props> = ({
       />
 
       <div className={styles.action}>
-        <Button variant="outlined" size="large" onClick={cancelHandler}>
+        <Button
+          type="button"
+          variant="outlined"
+          size="large"
+          onClick={cancelHandler}
+        >
           cancel
         </Button>
         <Button type="submit" size="large">
