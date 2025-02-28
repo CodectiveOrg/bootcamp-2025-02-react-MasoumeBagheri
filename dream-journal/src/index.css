@@ -21,7 +21,10 @@
 
   &[data-theme="dark"] {
     --color-surface: hsl(0, 0%, 15%);
+    --color-surface-elevated: hsl(0, 0%, 16%);
     --color-text: hsl(0, 0%, 97%);
+
+    --color-fade: hsl(0, 0%, 60%);
 
     color-scheme: dark;
   }
