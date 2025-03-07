@@ -1,11 +1,16 @@
+import { useContext } from "react";
+
 import { Button } from "../button";
-import { TextInput } from "../text-input";
+
+import { ModalContext } from "../../provider/modal-provider";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 
 import styles from "./footer.module.css";
 
 export const Footer: React.FC = () => {
+  const { openModal } = useContext(ModalContext);
+
   return (
     <footer className={styles.footer}>
       <Button
@@ -13,21 +18,10 @@ export const Footer: React.FC = () => {
         shape="circle"
         size="medium"
         variant="solid"
+        onClick={() => openModal()}
       >
         <MingcuteAddLine />
       </Button>
-      <dialog>
-        <div className={styles.content}>
-          <div className={styles.title}>new dream</div>
-          <TextInput placeholder="Input your dream..." />
-          <div className={styles.action}>
-            <Button variant="outlined" size="large">
-              cancel
-            </Button>
-            <Button size="large">apply</Button>
-          </div>
-        </div>
-      </dialog>
     </footer>
   );
 };

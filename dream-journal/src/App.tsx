@@ -3,16 +3,27 @@ import { Dreams } from "./components/dreams";
 import { Footer } from "./components/footer";
 import { Toolbar } from "./components/toolbar";
 
+import { ThemeProvider } from "./provider/theme-provider";
+import { DreamProvider } from "./provider/dream-provider";
+import { ModalProvider } from "./provider/modal-provider";
+import { FiltersProvider } from "./provider/filters-provider";
+
 function App() {
   return (
-    <div>
-      <Header />
-      <main>
-        <Toolbar />
-        <Dreams />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <DreamProvider>
+        <FiltersProvider>
+          <ModalProvider>
+            <Header />
+            <main>
+              <Toolbar />
+              <Dreams />
+            </main>
+            <Footer />
+          </ModalProvider>
+        </FiltersProvider>
+      </DreamProvider>
+    </ThemeProvider>
   );
 }
 

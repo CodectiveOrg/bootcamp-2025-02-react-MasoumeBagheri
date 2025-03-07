@@ -13,6 +13,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   shape?: Shape;
   size?: Size;
+  type?: string;
 };
 
 export const Button: React.FC<Props> = ({
@@ -21,11 +22,12 @@ export const Button: React.FC<Props> = ({
   size = "small",
   children,
   className,
+  type,
   ...rest
 }) => {
   return (
     <button
-      type="button"
+      type={type}
       className={clsx(
         styles.button,
         styles[variant],
