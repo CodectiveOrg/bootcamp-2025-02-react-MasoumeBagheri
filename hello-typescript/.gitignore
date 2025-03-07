@@ -175,7 +175,7 @@ dist
 .idea/**/aws.xml
 
 # Generated files
-.idea/**/descriptionModel.xml
+.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
