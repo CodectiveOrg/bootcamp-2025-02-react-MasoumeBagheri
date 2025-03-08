@@ -1,5 +1,7 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 
+import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage.keys";
+
 import { Dream } from "../types/dream.type";
 
 type DreamContextValue = {
@@ -18,7 +20,7 @@ type Props = PropsWithChildren;
 
 export const DreamProvider: React.FC<Props> = ({ children }) => {
   const [dreams, setDreams] = useState<Dream[]>(() => {
-    const items = localStorage.getItem("dreams");
+    const items = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEY);
 
     if (items === null) {
       return [];
@@ -46,7 +48,7 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    localStorage.setItem("dreams", JSON.stringify(dreams));
+    localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams));
   }, [dreams]);
 
   return (

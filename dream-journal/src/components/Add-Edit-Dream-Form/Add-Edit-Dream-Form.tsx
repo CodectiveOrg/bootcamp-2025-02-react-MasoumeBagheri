@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -24,10 +24,8 @@ export const AddEditDreamForm: React.FC<Props> = ({
   editingDream,
   toggleDialog,
 }) => {
-  const formRef = useRef<HTMLFormElement>(null);
-
   const cancelHandler = (): void => {
-    formRef.current?.reset();
+    //formRef.current?.reset();
     toggleDialog(false);
   };
 
@@ -75,7 +73,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
   };
 
   return (
-    <form ref={formRef} onSubmit={formSubmitHandler} className={styles.form}>
+    <form onSubmit={formSubmitHandler} className={styles.form}>
       <div className={styles.title}>
         {editingDream ? "edit dream" : "new dream"}
       </div>
