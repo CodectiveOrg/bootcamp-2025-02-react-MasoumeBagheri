@@ -27,7 +27,12 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const item = localStorage.getItem(THEME_LOCAL_STORAGE_KEY);
 
-    return item === "light" || item === "dark" ? item : "light";
+    const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+
+    return item === "light" || item === "dark" ? item : defaultTheme;
   });
 
   useEffect(() => {
