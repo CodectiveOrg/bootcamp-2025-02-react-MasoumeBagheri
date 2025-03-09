@@ -7,6 +7,8 @@ import {
   useState,
 } from "react";
 
+import { THEME_LOCAL_STORAGE_KEY } from "../constants/local-storage.keys";
+
 import { Theme } from "../types/theme.type";
 
 type ThemeContextValue = {
@@ -23,7 +25,7 @@ type Props = PropsWithChildren;
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    const item = localStorage.getItem("theme");
+    const item = localStorage.getItem(THEME_LOCAL_STORAGE_KEY);
 
     if (!item) {
       return "light";
@@ -35,7 +37,7 @@ export const ThemeProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
 
-    localStorage.setItem("theme", theme);
+    localStorage.setItem(THEME_LOCAL_STORAGE_KEY, theme);
   }, [theme]);
 
   return (
