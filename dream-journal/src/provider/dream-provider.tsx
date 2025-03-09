@@ -8,12 +8,14 @@ type DreamContextValue = {
   dreams: Dream[];
   addDream: (dream: Dream) => void;
   editDream: (dream: Dream) => void;
+  removeDream: (id: string) => void;
 };
 
 export const DreamContext = createContext<DreamContextValue>({
   dreams: [],
   addDream: () => {},
   editDream: () => {},
+  removeDream: () => {},
 });
 
 type Props = PropsWithChildren;
@@ -47,12 +49,16 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
+  const removeDream = (id: string): void => {
+    setDreams((old) => old.filter((x) => x.id !== id));
+  };
+
   useEffect(() => {
     localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams));
   }, [dreams]);
 
   return (
-    <DreamContext.Provider value={{ dreams, addDream, editDream }}>
+    <DreamContext.Provider value={{ dreams, addDream, editDream, removeDream }}>
       {children}
     </DreamContext.Provider>
   );

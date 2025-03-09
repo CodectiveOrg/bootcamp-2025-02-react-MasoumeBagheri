@@ -4,6 +4,7 @@ import { Button } from "../button";
 
 import { ModalContext } from "../../provider/modal-provider";
 import { FiltersContext } from "../../provider/filters-provider";
+import { DreamContext } from "../../provider/dream-provider";
 
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
@@ -17,6 +18,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-CA");
 export const Dreams: React.FC = () => {
   const { openModal } = useContext(ModalContext);
   const { filteredDream } = useContext(FiltersContext);
+  const { removeDream } = useContext(DreamContext);
 
   return (
     <ul className={styles.dreams}>
@@ -44,7 +46,11 @@ export const Dreams: React.FC = () => {
               >
                 <MingcuteEdit2Line />
               </Button>
-              <Button variant="transparent" className={styles.remove}>
+              <Button
+                variant="transparent"
+                className={styles.remove}
+                onClick={() => removeDream(id)}
+              >
                 <MingcuteDelete2Line />
               </Button>
             </div>
