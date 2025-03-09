@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -24,8 +24,14 @@ export const AddEditDreamForm: React.FC<Props> = ({
   editingDream,
   toggleDialog,
 }) => {
+  const [selectedVibe, setSelectedVibe] = useState<Vibe>("good");
+  useEffect(() => {
+    if (editingDream?.vibe) {
+      setSelectedVibe(editingDream.vibe);
+    }
+  }, [editingDream]);
+
   const cancelHandler = (): void => {
-    //formRef.current?.reset();
     toggleDialog(false);
   };
 
@@ -37,7 +43,6 @@ export const AddEditDreamForm: React.FC<Props> = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const date = formData.get("date") as string;
-    const vibe = (formData.get("vibe") as Vibe) || "good";
 
     if (!title) {
       console.log("Title is required.");
@@ -54,17 +59,12 @@ export const AddEditDreamForm: React.FC<Props> = ({
       return;
     }
 
-    if (!vibe) {
-      console.log("Vibe is required.");
-      return;
-    }
-
     const dream: Dream = {
       id: editingDream?.id ?? uuidv4(),
       title,
       description,
       date: new Date(date),
-      vibe,
+      vibe: selectedVibe,
     };
 
     onSubmit(dream);
@@ -97,9 +97,9 @@ export const AddEditDreamForm: React.FC<Props> = ({
           { value: "good", label: "😃 Good" },
           { value: "bad", label: "😭 Bad" },
         ]}
-        defaultValue={editingDream?.vibe ?? "good"}
+        value={selectedVibe}
+        onChange={(e) => setSelectedVibe(e.target.value as Vibe)}
       />
-
       <div className={styles.action}>
         <Button
           type="button"

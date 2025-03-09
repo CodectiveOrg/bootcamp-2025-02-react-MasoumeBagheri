@@ -69,11 +69,21 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
       <dialog ref={dialogRef} className={styles.dialog}>
-        <AddEditDreamForm
-          onSubmit={onSubmitHandler}
-          editingDream={editingDream}
-          toggleDialog={toggleDialog}
-        />
+        {editingDream && (
+          <AddEditDreamForm
+            onSubmit={onSubmitHandler}
+            editingDream={editingDream}
+            toggleDialog={toggleDialog}
+          />
+        )}
+
+        {!editingDream && (
+          <AddEditDreamForm
+            onSubmit={onSubmitHandler}
+            editingDream={editingDream}
+            toggleDialog={toggleDialog}
+          />
+        )}
       </dialog>
     </ModalContext.Provider>
   );
