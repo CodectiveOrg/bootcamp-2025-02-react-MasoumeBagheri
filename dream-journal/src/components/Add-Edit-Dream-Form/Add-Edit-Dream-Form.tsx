@@ -110,7 +110,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
           cancel
         </Button>
         <Button type="submit" size="large">
-          {editingDream ? "edit" : "create"}
+          {editingDream ? "edit" : "add"}
         </Button>
       </div>
     </form>
