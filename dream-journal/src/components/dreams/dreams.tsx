@@ -1,5 +1,7 @@
 import { useContext } from "react";
 
+import { toast } from "react-toastify";
+
 import { Button } from "../button";
 
 import { ModalContext } from "../../provider/modal-provider";
@@ -19,6 +21,11 @@ export const Dreams: React.FC = () => {
   const { openModal } = useContext(ModalContext);
   const { filteredDream } = useContext(FiltersContext);
   const { removeDream } = useContext(DreamContext);
+
+  const handleRemoveDream = (id: string) => {
+    removeDream(id);
+    toast.success("Removed dream successfully");
+  };
 
   return (
     <ul className={styles.dreams}>
@@ -49,7 +56,9 @@ export const Dreams: React.FC = () => {
               <Button
                 variant="transparent"
                 className={styles.remove}
-                onClick={() => removeDream(id)}
+                onClick={() => {
+                  handleRemoveDream(id);
+                }}
               >
                 <MingcuteDelete2Line />
               </Button>

@@ -1,5 +1,7 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 
+import { toast } from "react-toastify";
+
 import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage.keys";
 
 import { Dream } from "../types/dream.type";
@@ -35,6 +37,8 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
 
   const addDream = (dream: Dream): void => {
     setDreams((old) => [...old, dream]);
+
+    toast.success("Add dream successfully.");
   };
 
   const editDream = (dream: Dream): void => {
@@ -47,6 +51,8 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
         return oldDream;
       })
     );
+
+    toast.success("Edit dream successfully.");
   };
 
   const removeDream = (id: string): void => {
