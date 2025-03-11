@@ -3,7 +3,7 @@ import { Dreams } from "./components/dreams";
 import { Footer } from "./components/footer";
 import { Toolbar } from "./components/toolbar";
 
-import { Toaster } from "./components/toaster/toaster";
+import { Toaster } from "./components/toaster";
 
 import { ThemeProvider } from "./provider/theme-provider";
 import { DreamProvider } from "./provider/dream-provider";

@@ -8,8 +8,12 @@ import { Select } from "../select";
 import { TextInput } from "../text-input";
 import { TextArea } from "../textarea-input";
 
+import { toast } from "react-toastify";
+
 import { Vibe } from "../../types/vibe.type";
 import { Dream } from "../../types/dream.type";
+
+import { MODAL_CONTAINER_ID } from "../../constants/id";
 
 import styles from "./Add-Edit-Dream-Form.module.css";
 
@@ -45,17 +49,24 @@ export const AddEditDreamForm: React.FC<Props> = ({
     const date = formData.get("date") as string;
 
     if (!title) {
-      console.log("Title is required.");
+      toast.error("Title is required.", { containerId: MODAL_CONTAINER_ID });
       return;
     }
 
     if (!description) {
-      console.log("description is required.");
+      toast.error("description is required.", {
+        containerId: MODAL_CONTAINER_ID,
+      });
       return;
     }
 
     if (!date) {
-      console.log("Date is required.");
+      toast.error("Date is required.", { containerId: MODAL_CONTAINER_ID });
+      return;
+    }
+
+    if (!selectedVibe) {
+      toast.error("Vibe is required.", { containerId: MODAL_CONTAINER_ID });
       return;
     }
 

@@ -1,10 +1,12 @@
 import { useContext } from "react";
 
-import { Slide, ToastContainer } from "react-toastify";
+import { Slide, ToastContainer, ToastContainerProps } from "react-toastify";
 
 import { ThemeContext } from "../../provider/theme-provider";
 
-export const Toaster: React.FC = () => {
+type Props = Partial<ToastContainerProps>;
+
+export const Toaster: React.FC<Props> = (props) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -21,6 +23,7 @@ export const Toaster: React.FC = () => {
       theme={theme}
       transition={Slide}
       aria-label={undefined}
+      {...props}
     />
   );
 };

@@ -8,9 +8,13 @@ import {
 
 import { AddEditDreamForm } from "../components/Add-Edit-Dream-Form";
 
+import { Toaster } from "../components/toaster";
+
 import { DreamContext } from "./dream-provider";
 
 import { Dream } from "../types/dream.type";
+
+import { MODAL_CONTAINER_ID } from "../constants/id";
 
 import styles from "./ModalProvider.module.css";
 
@@ -84,6 +88,7 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
             toggleDialog={toggleDialog}
           />
         )}
+        <Toaster containerId={MODAL_CONTAINER_ID} />
       </dialog>
     </ModalContext.Provider>
   );
