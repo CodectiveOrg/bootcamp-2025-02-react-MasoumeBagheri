@@ -14,6 +14,7 @@ import MingcuteSunLine from "../../icons/MingcuteSunLine";
 import { Vibe } from "../../types/vibe.type";
 
 import styles from "./toolbar.module.css";
+import { LanguageButton } from "../language-button";
 
 export const Toolbar: React.FC = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -52,6 +53,7 @@ export const Toolbar: React.FC = () => {
         ]}
         onChange={changeVibeHandler}
       />
+      <LanguageButton />
       <Button
         shape="square"
         size="small"

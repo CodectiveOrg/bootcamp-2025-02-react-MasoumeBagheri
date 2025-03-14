@@ -10,7 +10,6 @@ import { TextArea } from "../textarea-input";
 
 import { toast } from "react-toastify";
 
-import { Vibe } from "../../types/vibe.type";
 import { Dream } from "../../types/dream.type";
 
 import { MODAL_CONTAINER_ID } from "../../constants/id";
@@ -28,25 +27,40 @@ export const AddEditDreamForm: React.FC<Props> = ({
   editingDream,
   toggleDialog,
 }) => {
-  const [selectedVibe, setSelectedVibe] = useState<Vibe>("good");
+  const initialDreamState: Dream = {
+    id: "",
+    title: "",
+    description: "",
+    date: new Date(),
+    vibe: "good",
+  };
+
+  const [dream, setDream] = useState<Dream>(initialDreamState);
+
   useEffect(() => {
-    if (editingDream?.vibe) {
-      setSelectedVibe(editingDream.vibe);
+    if (editingDream) {
+      setDream(editingDream);
+    } else {
+      setDream(initialDreamState);
     }
   }, [editingDream]);
 
-  const cancelHandler = (): void => {
-    toggleDialog(false);
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setDream((old) => ({
+      ...old,
+      [name]: name === "date" ? new Date(value) : value,
+    }));
   };
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-
-    const title = formData.get("title") as string;
-    const description = formData.get("description") as string;
-    const date = formData.get("date") as string;
+    const { title, description, date, vibe } = dream;
 
     if (!title) {
       toast.error("Title is required.", { containerId: MODAL_CONTAINER_ID });
@@ -65,22 +79,22 @@ export const AddEditDreamForm: React.FC<Props> = ({
       return;
     }
 
-    if (!selectedVibe) {
+    if (!vibe) {
       toast.error("Vibe is required.", { containerId: MODAL_CONTAINER_ID });
       return;
     }
 
-    const dream: Dream = {
-      id: editingDream?.id ?? uuidv4(),
-      title,
-      description,
-      date: new Date(date),
-      vibe: selectedVibe,
-    };
+    onSubmit({
+      ...dream,
+      id: dream.id || uuidv4(),
+    });
 
-    onSubmit(dream);
+    toggleDialog(false);
+  };
 
-    e.currentTarget.reset();
+  const cancelHandler = (): void => {
+    setDream(initialDreamState);
+    toggleDialog(false);
   };
 
   return (
@@ -91,16 +105,19 @@ export const AddEditDreamForm: React.FC<Props> = ({
       <TextInput
         name="title"
         placeholder="Input your dream..."
-        defaultValue={editingDream?.title}
+        value={dream.title}
+        onChange={handleChange}
       />
       <TextArea
         name="description"
         placeholder="Input your description..."
-        defaultValue={editingDream?.description}
+        value={dream.description}
+        onChange={handleChange}
       />
       <DateInput
         name="date"
-        defaultValue={editingDream?.date.toISOString().split("T")[0]}
+        value={dream.date.toISOString().split("T")[0]}
+        onChange={handleChange}
       />
       <Select
         name="vibe"
@@ -108,8 +125,8 @@ export const AddEditDreamForm: React.FC<Props> = ({
           { value: "good", label: "😃 Good" },
           { value: "bad", label: "😭 Bad" },
         ]}
-        value={selectedVibe}
-        onChange={(e) => setSelectedVibe(e.target.value as Vibe)}
+        value={dream.vibe}
+        onChange={handleChange}
       />
       <div className={styles.action}>
         <Button

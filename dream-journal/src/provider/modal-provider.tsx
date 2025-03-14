@@ -73,7 +73,7 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
     <ModalContext.Provider value={{ openModal, closeModal }}>
       {children}
       <dialog ref={dialogRef} className={styles.dialog}>
-        {editingDream && (
+        {/* {editingDream && (
           <AddEditDreamForm
             onSubmit={onSubmitHandler}
             editingDream={editingDream}
@@ -87,7 +87,12 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
             editingDream={editingDream}
             toggleDialog={toggleDialog}
           />
-        )}
+        )} */}
+        <AddEditDreamForm
+          onSubmit={onSubmitHandler}
+          editingDream={editingDream}
+          toggleDialog={toggleDialog}
+        />
         <Toaster containerId={MODAL_CONTAINER_ID} />
       </dialog>
     </ModalContext.Provider>
