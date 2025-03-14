@@ -1,3 +1,38 @@
 {
-  "title": "Dream Journal"
+  "app": {
+    "title": "Dream Journal"
+  },
+  "languages": {
+    "english": "English",
+    "farsi": "فارسی"
+  },
+  "dreams": {
+    "formTitle": {
+      "add": "new dream",
+      "edit": "edit dream"
+    },
+    "formInputs": {
+      "title": {
+        "placeholder": "Enter dream title..."
+      },
+      "description": {
+        "placeholder": "Enter dream description..."
+      },
+      "vibe": {
+        "all": "All",
+        "good": "😃 Good",
+        "bad": "😭 Bad"
+      }
+    },
+    "actions": {
+      "add": "add",
+      "edit": "edit",
+      "cancel": "cancel"
+    }
+  },
+  "toolbar": {
+    "search": {
+      "placeholder": "Search dreams..."
+    }
+  }
 }

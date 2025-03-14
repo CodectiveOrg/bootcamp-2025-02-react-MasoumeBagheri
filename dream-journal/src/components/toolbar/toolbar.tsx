@@ -1,8 +1,10 @@
 import { ChangeEvent, useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "../button";
 import { TextInput } from "../text-input";
 import { Select } from "../select";
+import { LanguageButton } from "../language-button";
 
 import { ThemeContext } from "../../provider/theme-provider";
 import { FiltersContext } from "../../provider/filters-provider";
@@ -14,9 +16,10 @@ import MingcuteSunLine from "../../icons/MingcuteSunLine";
 import { Vibe } from "../../types/vibe.type";
 
 import styles from "./toolbar.module.css";
-import { LanguageButton } from "../language-button";
 
 export const Toolbar: React.FC = () => {
+  const { t } = useTranslation();
+
   const { theme, setTheme } = useContext(ThemeContext);
   const { filters, setFilters } = useContext(FiltersContext);
 
@@ -47,9 +50,9 @@ export const Toolbar: React.FC = () => {
       <Select
         value={filters.vibe}
         options={[
-          { value: "all", label: "All" },
-          { value: "good", label: "Good" },
-          { value: "bad", label: "Bad" },
+          { value: "all", label: t("dreams.formInputs.vibe.all") },
+          { value: "good", label: t("dreams.formInputs.vibe.good") },
+          { value: "bad", label: t("dreams.formInputs.vibe.bad") },
         ]}
         onChange={changeVibeHandler}
       />

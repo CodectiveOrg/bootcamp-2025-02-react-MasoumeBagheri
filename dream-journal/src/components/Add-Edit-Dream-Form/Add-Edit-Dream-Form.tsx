@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -27,6 +28,8 @@ export const AddEditDreamForm: React.FC<Props> = ({
   editingDream,
   toggleDialog,
 }) => {
+  const { t } = useTranslation();
+
   const initialDreamState: Dream = {
     id: "",
     title: "",
@@ -100,17 +103,17 @@ export const AddEditDreamForm: React.FC<Props> = ({
   return (
     <form onSubmit={formSubmitHandler} className={styles.form}>
       <div className={styles.title}>
-        {editingDream ? "edit dream" : "new dream"}
+        {editingDream ? t("dreams.formTitle.edit") : t("dreams.formTitle.add")}
       </div>
       <TextInput
         name="title"
-        placeholder="Input your dream..."
+        placeholder={t("dreams.formInputs.title.placeholder")}
         value={dream.title}
         onChange={handleChange}
       />
       <TextArea
         name="description"
-        placeholder="Input your description..."
+        placeholder={t("dreams.formInputs.description.placeholder")}
         value={dream.description}
         onChange={handleChange}
       />
@@ -122,8 +125,8 @@ export const AddEditDreamForm: React.FC<Props> = ({
       <Select
         name="vibe"
         options={[
-          { value: "good", label: "😃 Good" },
-          { value: "bad", label: "😭 Bad" },
+          { value: "good", label: t("dreams.formInputs.vibe.good") },
+          { value: "bad", label: t("dreams.formInputs.vibe.bad") },
         ]}
         value={dream.vibe}
         onChange={handleChange}
@@ -135,10 +138,10 @@ export const AddEditDreamForm: React.FC<Props> = ({
           size="large"
           onClick={cancelHandler}
         >
-          cancel
+          {t("dreams.actions.cancel")}
         </Button>
         <Button type="submit" size="large">
-          {editingDream ? "edit" : "add"}
+          {editingDream ? t("dreams.actions.edit") : t("dreams.actions.add")}
         </Button>
       </div>
     </form>

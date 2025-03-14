@@ -1,6 +1,11 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import {
+  changeLanguage,
+  getLanguageFromLocalStorage,
+} from "./utils/i18n-utils";
+
 import enTranslation from "./locales/en/translation.json";
 import faTranslation from "./locales/fa/translation.json";
 
@@ -26,20 +31,6 @@ i18n
   .then();
 
 changeLanguage(i18n.language);
-
 i18n.on("languageChanged", changeLanguage);
-
-function getLanguageFromLocalStorage(): string {
-  const item = localStorage.getItem("language");
-
-  return item === "fa" ? item : "en";
-}
-
-function changeLanguage(language: string): void {
-  document.documentElement.lang = language;
-  document.documentElement.dir = language === "fa" ? "rtl" : "ltr";
-
-  localStorage.setItem("language", language);
-}
 
 export default i18n;
