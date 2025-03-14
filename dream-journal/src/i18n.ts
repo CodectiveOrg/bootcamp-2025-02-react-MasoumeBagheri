@@ -9,7 +9,9 @@ import {
 import enTranslation from "./locales/en/translation.json";
 import faTranslation from "./locales/fa/translation.json";
 
-const resources = {
+export const defaultNS = "translation";
+
+export const resources = {
   en: {
     translation: enTranslation,
   },
@@ -22,6 +24,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
+    ns: ["translation"],
+    defaultNS,
     lng: getLanguageFromLocalStorage(),
     fallbackLng: "en",
     interpolation: {
