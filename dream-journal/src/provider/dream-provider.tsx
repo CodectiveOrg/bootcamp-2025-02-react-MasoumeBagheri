@@ -36,7 +36,10 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
 
     const dreams: Dream[] = JSON.parse(items);
 
-    return dreams.map((dream) => ({ ...dream, date: new Date(dream.date) }));
+    return dreams.map((dream) => ({
+      ...dream,
+      date: new Date(dream.date).toISOString(),
+    }));
   });
 
   const addDream = (dream: Dream): void => {
