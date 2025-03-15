@@ -1,12 +1,14 @@
 import { useContext } from "react";
-
 import { Slide, ToastContainer, ToastContainerProps } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import { ThemeContext } from "../../provider/theme-provider";
 
 type Props = Partial<ToastContainerProps>;
 
 export const Toaster: React.FC<Props> = (props) => {
+  const { i18n } = useTranslation();
+
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -16,7 +18,7 @@ export const Toaster: React.FC<Props> = (props) => {
       hideProgressBar={false}
       newestOnTop
       closeOnClick={false}
-      rtl={false}
+      rtl={i18n.dir() === "rtl"}
       pauseOnFocusLoss
       draggable
       pauseOnHover

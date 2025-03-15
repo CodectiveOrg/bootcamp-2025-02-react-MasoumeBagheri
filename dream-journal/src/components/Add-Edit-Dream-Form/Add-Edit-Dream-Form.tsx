@@ -9,11 +9,9 @@ import { Select } from "../select";
 import { TextInput } from "../text-input";
 import { TextArea } from "../textarea-input";
 
-import { toast } from "react-toastify";
-
 import { Dream } from "../../types/dream.type";
 
-import { MODAL_CONTAINER_ID } from "../../constants/id";
+import { validateDream } from "../../validation/dream-validation";
 
 import styles from "./Add-Edit-Dream-Form.module.css";
 
@@ -34,7 +32,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
     id: "",
     title: "",
     description: "",
-    date: new Date(),
+    date: "",
     vibe: "good",
   };
 
@@ -56,34 +54,15 @@ export const AddEditDreamForm: React.FC<Props> = ({
     const { name, value } = e.target;
     setDream((old) => ({
       ...old,
-      [name]: name === "date" ? new Date(value) : value,
+      [name]:
+        name === "date" ? new Date(value).toISOString().split("T")[0] : value,
     }));
   };
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const { title, description, date, vibe } = dream;
-
-    if (!title) {
-      toast.error("Title is required.", { containerId: MODAL_CONTAINER_ID });
-      return;
-    }
-
-    if (!description) {
-      toast.error("description is required.", {
-        containerId: MODAL_CONTAINER_ID,
-      });
-      return;
-    }
-
-    if (!date) {
-      toast.error("Date is required.", { containerId: MODAL_CONTAINER_ID });
-      return;
-    }
-
-    if (!vibe) {
-      toast.error("Vibe is required.", { containerId: MODAL_CONTAINER_ID });
+    if (!validateDream(dream, t as (key: string) => string)) {
       return;
     }
 
@@ -97,6 +76,7 @@ export const AddEditDreamForm: React.FC<Props> = ({
 
   const cancelHandler = (): void => {
     setDream(initialDreamState);
+
     toggleDialog(false);
   };
 
@@ -119,7 +99,9 @@ export const AddEditDreamForm: React.FC<Props> = ({
       />
       <DateInput
         name="date"
-        value={dream.date.toISOString().split("T")[0]}
+        value={
+          dream.date ? new Date(dream.date).toISOString().split("T")[0] : ""
+        }
         onChange={handleChange}
       />
       <Select

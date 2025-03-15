@@ -2,6 +2,8 @@ import { useContext } from "react";
 
 import { toast } from "react-toastify";
 
+import { useTranslation } from "react-i18next";
+
 import { Button } from "../button";
 
 import { ModalContext } from "../../provider/modal-provider";
@@ -18,13 +20,15 @@ import styles from "./dreams.module.css";
 const dateFormatter = new Intl.DateTimeFormat("en-CA");
 
 export const Dreams: React.FC = () => {
+  const { t } = useTranslation();
+
   const { openModal } = useContext(ModalContext);
   const { filteredDream } = useContext(FiltersContext);
   const { removeDream } = useContext(DreamContext);
 
   const handleRemoveDream = (id: string) => {
     removeDream(id);
-    toast.success("Removed dream successfully");
+    toast.success(t("dreams.notifications.removed"));
   };
 
   return (
@@ -41,7 +45,9 @@ export const Dreams: React.FC = () => {
               )}
             </div>
             <div className={styles.title}>{title}</div>
-            <div className={styles.date}>{dateFormatter.format(date)}</div>
+            <div className={styles.date}>
+              {dateFormatter.format(new Date(date))}
+            </div>
             <div className={styles.description}>{description}</div>
             <div className={styles.actions}>
               <Button

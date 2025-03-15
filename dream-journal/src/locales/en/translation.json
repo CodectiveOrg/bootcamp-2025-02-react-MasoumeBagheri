@@ -28,8 +28,28 @@
       "add": "add",
       "edit": "edit",
       "cancel": "cancel"
+    },
+    "notifications": {
+      "removed": "Removed dream successfully",
+      "add": "Add dream successfully",
+      "edit": "Edit dream successfully"
     }
   },
+  "validation": {
+    "title": {
+      "required": "Title is required",
+      "length": "Title must be 3-16 characters and should not include any special character!"
+    },
+    "description": {
+      "title": "Description is required",
+      "length": "Description must be less than 500 characters"
+    },
+    "date": {
+      "required": "Date is required",
+      "pastOnly": "The selected date must be today or in the past"
+    }
+  },
+
   "toolbar": {
     "search": {
       "placeholder": "Search dreams..."

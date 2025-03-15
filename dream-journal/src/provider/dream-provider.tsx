@@ -2,6 +2,8 @@ import { createContext, PropsWithChildren, useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 
+import { useTranslation } from "react-i18next";
+
 import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage.keys";
 
 import { Dream } from "../types/dream.type";
@@ -23,6 +25,8 @@ export const DreamContext = createContext<DreamContextValue>({
 type Props = PropsWithChildren;
 
 export const DreamProvider: React.FC<Props> = ({ children }) => {
+  const { t } = useTranslation();
+
   const [dreams, setDreams] = useState<Dream[]>(() => {
     const items = localStorage.getItem(DREAMS_LOCAL_STORAGE_KEY);
 
@@ -38,7 +42,7 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
   const addDream = (dream: Dream): void => {
     setDreams((old) => [...old, dream]);
 
-    toast.success("Add dream successfully.");
+    toast.success(t("dreams.notifications.add"));
   };
 
   const editDream = (dream: Dream): void => {
@@ -52,7 +56,7 @@ export const DreamProvider: React.FC<Props> = ({ children }) => {
       })
     );
 
-    toast.success("Edit dream successfully.");
+    toast.success(t("dreams.notifications.edit"));
   };
 
   const removeDream = (id: string): void => {
