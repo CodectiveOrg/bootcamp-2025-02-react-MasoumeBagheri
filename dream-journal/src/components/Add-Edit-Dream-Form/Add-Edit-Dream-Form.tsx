@@ -1,4 +1,5 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -8,8 +9,9 @@ import { Select } from "../select";
 import { TextInput } from "../text-input";
 import { TextArea } from "../textarea-input";
 
-import { Vibe } from "../../types/vibe.type";
 import { Dream } from "../../types/dream.type";
+
+import { validateDream } from "../../validation/dream-validation";
 
 import styles from "./Add-Edit-Dream-Form.module.css";
 
@@ -24,84 +26,93 @@ export const AddEditDreamForm: React.FC<Props> = ({
   editingDream,
   toggleDialog,
 }) => {
-  const formRef = useRef<HTMLFormElement>(null);
+  const { t } = useTranslation();
 
-  const cancelHandler = (): void => {
-    formRef.current?.reset();
-    toggleDialog(false);
+  const initialDreamState: Dream = {
+    id: "",
+    title: "",
+    description: "",
+    date: "",
+    vibe: "good",
+  };
+
+  const [dream, setDream] = useState<Dream>(initialDreamState);
+
+  useEffect(() => {
+    if (editingDream) {
+      setDream(editingDream);
+    } else {
+      setDream(initialDreamState);
+    }
+  }, [editingDream]);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setDream((old) => ({
+      ...old,
+      [name]:
+        name === "date" ? new Date(value).toISOString().split("T")[0] : value,
+    }));
   };
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
-
-    const title = formData.get("title") as string;
-    const description = formData.get("description") as string;
-    const date = formData.get("date") as string;
-    const vibe = (formData.get("vibe") as Vibe) || "good";
-
-    if (!title) {
-      console.log("Title is required.");
+    if (!validateDream(dream, t as (key: string) => string)) {
       return;
     }
 
-    if (!description) {
-      console.log("description is required.");
-      return;
-    }
+    onSubmit({
+      ...dream,
+      id: dream.id || uuidv4(),
+    });
 
-    if (!date) {
-      console.log("Date is required.");
-      return;
-    }
+    toggleDialog(false);
+  };
 
-    if (!vibe) {
-      console.log("Vibe is required.");
-      return;
-    }
+  const cancelHandler = (): void => {
+    setDream(initialDreamState);
 
-    const dream: Dream = {
-      id: editingDream?.id ?? uuidv4(),
-      title,
-      description,
-      date: new Date(date),
-      vibe,
-    };
-
-    onSubmit(dream);
-
-    e.currentTarget.reset();
+    toggleDialog(false);
   };
 
   return (
-    <form ref={formRef} onSubmit={formSubmitHandler} className={styles.form}>
+    <form onSubmit={formSubmitHandler} className={styles.form}>
       <div className={styles.title}>
-        {editingDream ? "edit dream" : "new dream"}
+        {editingDream ? t("dreams.formTitle.edit") : t("dreams.formTitle.add")}
       </div>
       <TextInput
         name="title"
-        placeholder="Input your dream..."
-        defaultValue={editingDream?.title}
+        placeholder={t("dreams.formInputs.title.placeholder")}
+        value={dream.title}
+        onChange={handleChange}
       />
       <TextArea
         name="description"
-        placeholder="Input your description..."
-        defaultValue={editingDream?.description}
+        placeholder={t("dreams.formInputs.description.placeholder")}
+        value={dream.description}
+        onChange={handleChange}
       />
       <DateInput
         name="date"
-        defaultValue={editingDream?.date.toISOString().split("T")[0]}
+        value={
+          dream.date ? new Date(dream.date).toISOString().split("T")[0] : ""
+        }
+        onChange={handleChange}
       />
       <Select
         name="vibe"
         options={[
-          { value: "good", label: "😃 Good" },
-          { value: "bad", label: "😭 Bad" },
+          { value: "good", label: t("dreams.formInputs.vibe.good") },
+          { value: "bad", label: t("dreams.formInputs.vibe.bad") },
         ]}
-        defaultValue={editingDream?.vibe ?? "good"}
+        value={dream.vibe}
+        onChange={handleChange}
       />
-
       <div className={styles.action}>
         <Button
           type="button"
@@ -109,10 +120,10 @@ export const AddEditDreamForm: React.FC<Props> = ({
           size="large"
           onClick={cancelHandler}
         >
-          cancel
+          {t("dreams.actions.cancel")}
         </Button>
         <Button type="submit" size="large">
-          {editingDream ? "edit" : "create"}
+          {editingDream ? t("dreams.actions.edit") : t("dreams.actions.add")}
         </Button>
       </div>
     </form>
