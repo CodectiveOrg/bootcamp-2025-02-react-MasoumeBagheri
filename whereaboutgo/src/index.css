@@ -1,3 +1,9 @@
+:root {
+  --color-text: hsl(240, 9%, 22%);
+  --color-primary: hsl(206, 84%, 38%);
+  --color-primary-hover: hsl(206, 84%, 30%);
+}
+
 *,
 *::before,
 *::after {
@@ -24,3 +30,155 @@ option,
 optgroup {
   font: inherit;
 }
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  color: var(--color-text);
+
+  font-size: var(--fz-400);
+
+  inline-size: min(50rem, 100% - 2rem);
+
+  margin-inline: auto;
+}
+
+/* <style > * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--grey-3) var(--white);
+}
+<style > * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--grey-3) var(--white);
+}
+<style > * {
+  box-sizing: border-box;
+}
+*,
+::backdrop,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid;
+  margin: 0;
+  padding: 0;
+}
+user agent stylesheet div {
+  display: block;
+  unicode-bidi: isolate;
+}
+.__className_a84655 {
+  font-family:
+    IranSansFont,
+    IranSansFont Fallback;
+}
+<style > html,
+body {
+  font-size: 10px;
+  direction: rtl;
+  margin: 0px;
+  padding: 0px;
+  font-family: var(--font-primary) !important;
+}
+body {
+  line-height: inherit;
+}
+style attribute {
+  color-scheme: light;
+}
+<style > [data-theme="light"] {
+  --header--header-background: #ffffff;
+  --header--mobile-title-background: #f9f9f9;
+  --header--zoomit-typography: #32323c;
+  --header--zoomit-logo: #1e88e5;
+  --header--menu-link: #32323c;
+  --header--search-icon-background: #32323c;
+  --header--search-icon: #ffffff;
+  --single-article--header-background: #ffffff;
+  --button--contained--default-text: #ffffff;
+  --button--contained--default-background: #32323c;
+  --button--contained--default-border: #32323c;
+  --button--contained--default-icon: #1e88e5;
+  --button--outline--default-text: #32323c;
+  --button--outline--default-border: #eeeeee;
+  --button--outline--default-icon: #0f6cb2;
+  --button--text--default-text: #32323c;
+  --button--contained--secondary-text: #32323c;
+  --button--contained--secondary-background: #ffffff;
+  --button--contained--secondary-border: #ffffff;
+  --button--outline--secondary-text: #32323c;
+  --button--outline--secondary-border: #eeeeee;
+  --button--text--secondary-text: #ffffff;
+  --button--contained--primary-text: #ffffff;
+  --button--contained--primary-background: #1e88e5;
+  --button--contained--primary-border: #1e88e5;
+  --button--outline--primary-text: #32323c;
+  --button--outline--primary-border: #1e88e5;
+  --button--text--primary-text: #32323c;
+  --button--contained--text-disable: #afafb6;
+  --button--contained--background-disable: #767676;
+  --button--contained--spinner: #ffffff;
+  --button--contained--spinner-border: #afafb6;
+  --button--outline--text-disable: #afafb6;
+  --button--outline--background-disable: "transparent";
+  --button--outline--spinner: #32323c;
+  --button--outline--spinner-border: #afafb6;
+} */
+
+/* <style > [data-theme="light"] {
+  --text: #32323c;
+  --text-hover: #0f6cb2;
+  --background-1: #f9f9f9;
+  --background-2: #ffffff;
+  --card: #ffffff;
+  --primary-1: #1e88e5;
+  --primary-2: #0f6cb2;
+  --primary-3: #1e88e5;
+  --success1: #29c452;
+  --success2: #d4f3dc;
+  --warning1: #f57c00;
+  --error: #ff2b35;
+  --info: #0086fc;
+  --info2: #cce7fe;
+  --black-1: #000000;
+  --black-3: #32323c;
+  --black-5: #4b4b55;
+  --grey-1: #767676;
+  --grey-3: #afafb6;
+  --grey-5: #d8d8d8;
+  --grey-6: #eeeeee;
+  --grey-7: #f9f9f9;
+  --white: #ffffff;
+  --elevation: #19192329;
+  --border-primary: #eeeeee;
+  --border-secondary: #afafb6;
+  --c-primary1: 30 136 229;
+  --c-primary2: 15 108 178;
+  --c-primary3: 30 136 229;
+  --c-info: 0 134 252;
+  --c-info2: 204 231 254;
+  --c-success1: 41 196 82;
+  --c-success2: 212 243 220;
+  --c-warning1: 245 124 0;
+  --c-purple: 151 89 204;
+  --c-error: 255 43 53;
+  --c-grey1: 118 118 118;
+  --c-grey3: 175 175 182;
+  --c-grey5: 216 216 216;
+  --c-grey6: 238 238 238;
+  --c-grey7: 249 249 249;
+  --c-black1: 0 0 0;
+  --c-black3: 50 50 60;
+  --c-black5: 75 75 85;
+  --c-white: 255 255 255;
+  --c-text: 50 50 60;
+  --c-textGrey: 118 118 118;
+  --c-textPrimary: 30 136 229;
+  --c-textHover: 15 108 178;
+  --c-textBlue: 0 134 252; */

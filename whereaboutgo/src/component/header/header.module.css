@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  padding-block: 1rem;
+
+  .logo {
+    img {
+      inline-size: 70px;
+      block-size: auto;
+    }
+  }
+
+  nav {
+    > ul {
+      display: flex;
+      gap: 1rem;
+
+      > li {
+        a {
+          color: inherit;
+
+          &:hover {
+            color: var(--color-primary-hover);
+          }
+
+          &.active {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+}
