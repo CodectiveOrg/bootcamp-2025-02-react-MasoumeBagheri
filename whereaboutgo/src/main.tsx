@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router";
 
 import App from "./App.tsx";
 
+import "./styles/typography.css";
+
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
