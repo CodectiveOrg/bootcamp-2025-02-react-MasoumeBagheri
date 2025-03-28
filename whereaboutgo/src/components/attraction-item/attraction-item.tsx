@@ -23,8 +23,11 @@ export const AttractionItem: React.FC<AttractionProps> = ({ attraction }) => {
         />
       </div>
       <div className={styles.writings}>
-        <h3 className={styles.title}>{title}</h3>
-        <div dangerouslySetInnerHTML={{ __html: description }} />
+        <div className={styles.title}>{title}</div>
+        <div
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
       <div className={styles.rating}>
         <div className={styles.averageRating}>
