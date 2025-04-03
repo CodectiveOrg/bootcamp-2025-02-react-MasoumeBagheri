@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 import { AttractionList } from "../../components/attraction-list";
+import { Filters } from "../../components/filters";
+
+import styles from "./home.module.css";
 
 export const Home = () => {
   const [attractions, setAttractions] = useState([]);
@@ -16,10 +19,9 @@ export const Home = () => {
     fetchAttractions().then();
   }, []);
 
-  console.log(attractions);
-
   return (
-    <div>
+    <div className={styles.home}>
+      <Filters />
       <AttractionList attractions={attractions} />
     </div>
   );

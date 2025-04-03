@@ -1,0 +1,45 @@
+.tag-filter {
+  background-color: var(--color-surface-300);
+  box-shadow: var(--color-box-shadow);
+
+  border-radius: 0.5rem;
+
+  .title {
+    padding: 0.5rem 1rem;
+
+    font-size: var(--fz-500);
+    font-weight: 700;
+  }
+
+  .tag {
+    overflow: auto;
+
+    display: grid;
+
+    max-block-size: 20rem;
+
+    scrollbar-width: thin;
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      padding: 0.5rem 1rem;
+
+      cursor: pointer;
+
+      input {
+        block-size: 1em;
+        inline-size: 1em;
+
+        font-size: 1.25em;
+        accent-color: var(--color-primary-hover);
+      }
+
+      &:hover {
+        background-color: var(--color-primary-fade);
+      }
+    }
+  }
+}

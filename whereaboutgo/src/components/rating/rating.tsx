@@ -11,15 +11,6 @@ export const Rating: React.FC<RatingProps> = ({
   averageRating,
   color = "var(--color-rating)",
 }) => {
-  const totalStars = 5;
-  const fullStars = Math.floor(averageRating);
-  const hasHalfStar = averageRating % 1 !== 0;
-  const emptyStars = totalStars - fullStars - (hasHalfStar ? 1 : 0);
-
-  console.log([...Array(fullStars)]);
-  console.log(hasHalfStar);
-  console.log([...Array(emptyStars)]);
-
   return (
     <div className={styles.rating}>
       {[1, 2, 3, 4, 5].map((index) => (
