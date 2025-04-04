@@ -1,0 +1,26 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .emoji {
+    block-size: 10rem;
+    inline-size: 10rem;
+  }
+
+  .description {
+    font-size: 1.75rem;
+  }
+
+  a {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+
+    padding: 0.75rem 2rem;
+
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+}
