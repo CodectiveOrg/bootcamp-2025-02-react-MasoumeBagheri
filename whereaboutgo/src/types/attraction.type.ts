@@ -1,4 +1,4 @@
-import { AttractionTag } from "./attraction-tag";
+import { AttractionTag } from "./attraction-tag.type";
 
 export type Attraction = {
   id: number;
@@ -10,4 +10,8 @@ export type Attraction = {
   ratingCount: number;
   tags: AttractionTag[];
   phone: string;
+  address: string;
+  url: string;
+  carousel: string[];
+  body: string;
 };

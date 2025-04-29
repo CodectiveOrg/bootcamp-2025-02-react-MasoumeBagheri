@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import { Home } from "./pages/home";
 import { About } from "./pages/about";
 import { NotFound } from "./pages/not-found";
+import { Attraction } from "./pages/attraction";
 
 import { RootLayout } from "./root-layout";
 
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route element={<RootLayout />}>
         <Route index element={<Home />} />
+        <Route path="attraction/:id" element={<Attraction />} />
         <Route path="about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Route>

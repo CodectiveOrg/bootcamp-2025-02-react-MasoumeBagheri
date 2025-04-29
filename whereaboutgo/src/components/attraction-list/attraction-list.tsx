@@ -1,19 +1,17 @@
+import { useContext } from "react";
+
 import { AttractionItem } from "../attraction-item";
 
-import { Attraction } from "../../types/attraction";
+import { AttractionsContext } from "../../context/attractions-context";
 
 import styles from "./attraction-list.module.css";
 
-type AttractionListProps = {
-  attractions: Attraction[];
-};
+export const AttractionList: React.FC = () => {
+  const { filteredAttractions } = useContext(AttractionsContext);
 
-export const AttractionList: React.FC<AttractionListProps> = ({
-  attractions,
-}) => {
   return (
     <ul className={styles["attraction-list"]}>
-      {attractions.map((attraction) => (
+      {filteredAttractions.map((attraction) => (
         <AttractionItem
           key={`attraction-${attraction.id}`}
           attraction={attraction}

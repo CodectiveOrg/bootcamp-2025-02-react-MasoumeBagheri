@@ -1,17 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+
+import { FiltersContext } from "../../../../context/filters-context";
 
 import { tags } from "../../../../data/tags";
 
 import styles from "./tag-filter.module.css";
 
 export const TagFilter: React.FC = () => {
-  const [selectedTags, setSelectedTags] = useState<number[]>([]);
-
-  const toggleTag = (id: number): void => {
-    setSelectedTags((old) =>
-      old.includes(id) ? old.filter((tagId) => tagId !== id) : [...old, id]
-    );
-  };
+  const { filters, toggleTag } = useContext(FiltersContext);
 
   return (
     <div className={styles["tag-filter"]}>
@@ -22,8 +18,8 @@ export const TagFilter: React.FC = () => {
             <input
               type="checkbox"
               value={tag.id}
-              checked={selectedTags.includes(tag.id)}
-              onChange={() => toggleTag(tag.id)}
+              checked={filters.tags.some((t) => t.id === tag.id)}
+              onChange={() => toggleTag(tag)}
             ></input>
             {tag.title}
           </label>

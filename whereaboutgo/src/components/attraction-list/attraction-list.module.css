@@ -1,4 +1,6 @@
 .attraction-list {
   display: grid;
+  align-items: start;
+  justify-content: center;
   gap: 1rem;
 }

@@ -1,8 +1,10 @@
+import { Link } from "react-router";
+
 import { Rating } from "../rating";
 
 import { convertToPersianDigits } from "../../utils/convertToPersianDigits";
 
-import { Attraction } from "../../types/attraction";
+import { Attraction } from "../../types/attraction.type";
 
 import styles from "./attraction-item.module.css";
 
@@ -11,8 +13,10 @@ type AttractionProps = {
 };
 
 export const AttractionItem: React.FC<AttractionProps> = ({ attraction }) => {
-  const { title, description, thumbnail, averageRating, ratingCount } =
+  const { id, title, description, thumbnail, averageRating, ratingCount } =
     attraction;
+
+  console.log(attraction);
 
   return (
     <li className={styles.attraction}>
@@ -23,7 +27,9 @@ export const AttractionItem: React.FC<AttractionProps> = ({ attraction }) => {
         />
       </div>
       <div className={styles.writings}>
-        <div className={styles.title}>{title}</div>
+        <Link to={`/attraction/${id}`} className={styles.title}>
+          {title}
+        </Link>
         <div
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: description }}
@@ -38,6 +44,11 @@ export const AttractionItem: React.FC<AttractionProps> = ({ attraction }) => {
           ({convertToPersianDigits(ratingCount)} رأی)
         </div>
       </div>
+      <ul className={styles.tags}>
+        {attraction.tags.map((tag) => (
+          <li key={`tagId-${tag.id}`}>{tag.title}</li>
+        ))}
+      </ul>
     </li>
   );
 };
