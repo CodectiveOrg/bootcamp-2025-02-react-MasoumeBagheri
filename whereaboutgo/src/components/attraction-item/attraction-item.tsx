@@ -16,8 +16,6 @@ export const AttractionItem: React.FC<AttractionProps> = ({ attraction }) => {
   const { id, title, description, thumbnail, averageRating, ratingCount } =
     attraction;
 
-  console.log(attraction);
-
   return (
     <li className={styles.attraction}>
       <div className={styles.visuals}>

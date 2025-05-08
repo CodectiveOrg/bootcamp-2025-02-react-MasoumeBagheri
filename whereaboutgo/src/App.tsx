@@ -7,18 +7,22 @@ import { Attraction } from "./pages/attraction";
 
 import { RootLayout } from "./root-layout";
 
+import QueryProvider from "./providers/query-provider";
+
 import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<RootLayout />}>
-        <Route index element={<Home />} />
-        <Route path="attraction/:id" element={<Attraction />} />
-        <Route path="about" element={<About />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <QueryProvider>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="attraction/:id" element={<Attraction />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </QueryProvider>
   );
 }
 
