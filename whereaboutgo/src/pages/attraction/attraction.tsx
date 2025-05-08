@@ -16,6 +16,7 @@ export const Attraction = () => {
   const { data: attraction, isFetching } = useQuery({
     queryKey: ["attraction", id],
     queryFn: () => fetchAttractionDetails(id),
+    staleTime: 60 * 1000,
   });
 
   if (isFetching || !attraction) {

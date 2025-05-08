@@ -11,9 +11,11 @@ import { Loading } from "../loading";
 export const AttractionList: React.FC = () => {
   const { filters } = useContext(FiltersContext);
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isFetching, isError, error } = useQuery({
     queryKey: ["attractions", filters],
     queryFn: () => fetchAttractions(filters),
+    staleTime: 60 * 1000,
+    placeholderData: [],
   });
 
   if (isLoading) {
@@ -25,7 +27,10 @@ export const AttractionList: React.FC = () => {
   }
 
   return (
-    <ul className={styles["attraction-list"]}>
+    <ul
+      className={styles["attraction-list"]}
+      style={{ opacity: isFetching ? "0.5" : "1" }}
+    >
       {data?.map((attraction) => (
         <AttractionItem
           key={`attraction-${attraction.id}`}
