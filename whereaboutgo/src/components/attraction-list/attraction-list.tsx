@@ -6,6 +6,7 @@ import styles from "./attraction-list.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { FiltersContext } from "../../context/filters-context";
 import { fetchAttractions } from "../../api/fetch-attractions";
+import { Loading } from "../loading";
 
 export const AttractionList: React.FC = () => {
   const { filters } = useContext(FiltersContext);
@@ -16,7 +17,7 @@ export const AttractionList: React.FC = () => {
   });
 
   if (isLoading) {
-    return <>Loading...</>;
+    return <Loading />;
   }
 
   if (isError) {

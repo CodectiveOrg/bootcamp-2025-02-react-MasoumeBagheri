@@ -1,0 +1,12 @@
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-surface-400);
+  backdrop-filter: blur(3px);
+}
