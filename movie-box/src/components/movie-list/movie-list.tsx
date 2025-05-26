@@ -14,14 +14,13 @@ import styles from "./movie-list.module.css";
 export const MovieList: React.FC = () => {
   const { filters } = useContext(FiltersContext);
 
-  const { data, isLoading, isFetching, isError, error } = useQuery({
+  const { data, isPending, isFetching, isError, error } = useQuery({
     queryKey: ["movies", filters],
     queryFn: () => fetchMovies(filters),
     staleTime: 60 * 1000,
-    placeholderData: [],
   });
 
-  if (isLoading) {
+  if (isPending) {
     return <Loading />;
   }
 
@@ -30,10 +29,6 @@ export const MovieList: React.FC = () => {
   }
 
   console.log(data);
-
-  if (!data) {
-    return <>There is no data.</>;
-  }
 
   return (
     <ul

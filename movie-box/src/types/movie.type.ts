@@ -1,4 +1,4 @@
-import type { GenreType } from "./genre.type.ts";
+import type { GenreType } from "./genre.type";
 
 export type MovieType = {
   backdrop_path: string;
