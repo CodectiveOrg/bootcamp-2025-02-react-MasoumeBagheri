@@ -2,9 +2,7 @@ import { useMemo } from "react";
 
 import { Link } from "react-router";
 
-import { useQuery } from "@tanstack/react-query";
-
-import { fetchGenresApi } from "../../api/fetch-genres";
+import useGenres from "../../queries/use-genres";
 
 import type { MovieListItemType } from "../../types/movie-list-item.type";
 
@@ -17,10 +15,7 @@ type Props = {
 };
 
 export const MovieListItem: React.FC<Props> = ({ movie }) => {
-  const { data: allGenres } = useQuery({
-    queryKey: ["genres"],
-    queryFn: fetchGenresApi,
-  });
+  const { data: allGenres } = useGenres();
 
   const movieGenres = useMemo(() => {
     if (!allGenres) {
