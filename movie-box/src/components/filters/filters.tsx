@@ -1,4 +1,4 @@
-import { GenreFilter } from "../genre-filter";
+import { GenreFilter } from "./components/genre-filter";
 
 export const Filters: React.FC = () => {
   return <GenreFilter />;
