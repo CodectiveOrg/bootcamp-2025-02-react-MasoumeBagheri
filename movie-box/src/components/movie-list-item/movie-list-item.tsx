@@ -1,16 +1,35 @@
+import { useMemo } from "react";
+
 import { Link } from "react-router";
 
-import type { MovieType } from "../../types/movie.type";
+import { useQuery } from "@tanstack/react-query";
+
+import { fetchGenresApi } from "../../api/fetch-genres";
+
+import type { MovieListItemType } from "../../types/movie-list-item.type";
 
 import FluentEmojiStar from "../../icons/FluentEmojiStar";
 
 import styles from "./movie-list-item.module.css";
 
 type Props = {
-  movie: MovieType;
+  movie: MovieListItemType;
 };
 
 export const MovieListItem: React.FC<Props> = ({ movie }) => {
+  const { data: allGenres } = useQuery({
+    queryKey: ["genres"],
+    queryFn: fetchGenresApi,
+  });
+
+  const movieGenres = useMemo(() => {
+    if (!allGenres) {
+      return [];
+    }
+
+    return allGenres.filter((x) => movie.genre_ids.includes(x.id));
+  }, [allGenres, movie.genre_ids]);
+
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
@@ -33,8 +52,8 @@ export const MovieListItem: React.FC<Props> = ({ movie }) => {
         />
       </div>
       <ul className={styles.genres}>
-        {movie.genres.map((genre) => (
-          <li key={genre.id}>{genre.title}</li>
+        {movieGenres.map((genre) => (
+          <li key={genre.id}>{genre.name}</li>
         ))}
       </ul>
     </li>
