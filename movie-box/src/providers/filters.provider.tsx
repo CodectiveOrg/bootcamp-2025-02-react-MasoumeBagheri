@@ -8,12 +8,7 @@ import type { GenreType } from "../types/genre.type";
 export const FiltersProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [filters, setFilters] = useState<FiltersType>({
     genres: [],
-    query: "movie",
   });
-
-  const updateQuery = (query: string): void => {
-    setFilters((old) => ({ ...old, query }));
-  };
 
   const toggleGenre = (genre: GenreType): void => {
     setFilters((old) => {
@@ -30,9 +25,7 @@ export const FiltersProvider: React.FC<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <FiltersContext.Provider
-      value={{ filters, toggleGenre: toggleGenre, updateQuery }}
-    >
+    <FiltersContext.Provider value={{ filters, toggleGenre: toggleGenre }}>
       {children}
     </FiltersContext.Provider>
   );
