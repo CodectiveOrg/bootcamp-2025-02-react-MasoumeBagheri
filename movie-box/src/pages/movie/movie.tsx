@@ -1,6 +1,8 @@
+import { useParams } from "react-router";
+
 import { useQuery } from "@tanstack/react-query";
 
-import { useParams } from "react-router";
+import { MovieDetails } from "../../components/movie-details";
 
 import { fetchMovie } from "../../api/fetch-movie";
 
@@ -18,6 +20,9 @@ export default function MoviePage() {
   if (isFetching || !movie) {
     return <>در حال بارگذاری...</>;
   }
-
-  return <div className={styles.Movie}>{movie.title}</div>;
+  return (
+    <div className={styles.Movie}>
+      <MovieDetails movie={movie} />
+    </div>
+  );
 }
